@@ -1,0 +1,131 @@
+#ifndef plotting_h
+#define plotting_h
+
+#include <vector>
+#include <string>
+#include "TGraph.h"
+#include "TCanvas.h"
+#include "TPad.h"
+#include "TH1.h"
+#include "TLegend.h"
+#include "TColor.h"
+#include "TPaveText.h"
+
+class plot
+	{
+	public:
+		~plot();
+		plot();
+		virtual void clear_plot_data();
+		virtual void generate_plot(std::string plotname, std::string xtext, std::string ytext, double xmin, double xmax, double ymin, double ymax);
+		double minCMS;
+		double minATLAS;
+		double min;
+		int CMSlt1;
+		int CMSlt2;
+		int CMSlt3;
+		int CMSgt3;
+		int ATLASlt1;
+		int ATLASlt2;
+		int ATLASlt3;
+		int ATLASgt3;
+		int lt1;
+		int lt2;
+		int lt3;
+		int gt3;
+		std::vector<double> chisqCMS;
+		std::vector<double> chisqATLAS;
+		std::vector<double> chisq;
+		std::vector<double> CMSx;
+		std::vector<double> CMSy;
+		std::vector<double> ATLASx;
+		std::vector<double> ATLASy;
+		std::vector<double> COMBx;
+		std::vector<double> COMBy;
+		std::vector<double> ratiotest;
+
+		bool bool_chisq;
+		bool bool_f;
+		bool bool_tB;
+		bool bool_ma0;
+		bool bool_deg;
+		bool bool_prim;
+		bool bool_double;
+		bool bool_prim2;
+		bool bool_delta;
+		bool bool_degen;
+	private:
+		TCanvas *canv;
+		TPad *pad1;
+		TPad *pad2;
+		TPad *pad3;
+		TH1D *h_axis;
+		TGraph *rejectCMS;
+		TGraph *rejectATLAS;
+		TGraph *gCMS1;
+		TGraph *gCMS2;
+		TGraph *gCMS3;
+		TGraph *gCMS4;
+		TGraph *gATLAS1;
+		TGraph *gATLAS2;
+		TGraph *gATLAS3;
+		TGraph *gATLAS4;
+		TGraph *g1;
+		TGraph *g2;
+		TGraph *g3;
+		TGraph *g4;
+		TGraph *gc0;
+		TGraph *gc1;
+		TGraph *gc2;
+		TGraph *gc3;
+		TGraph *gc4;
+		TGraph *gc5;
+		TGraph *gc6;
+		TGraph *gc7;
+		TGraph *gc8;
+		TGraph *gc9;
+		TGraph *gc10;
+		TGraph *gc11;
+		TGraph *gc12;
+		TGraph *gc13;
+		TGraph *gc14;
+		TGraph *gc15;
+		TPaveText *pt1;
+		TPaveText *pt2;
+		TPaveText *pt3;
+		TLegend *leg1;
+		TLegend *leg2;
+		TLegend *leg3;
+		int iCMSlt1;
+		int iCMSlt2;
+		int iCMSlt3;
+		int iCMSgt3;
+		int iATLASlt1;
+		int iATLASlt2;
+		int iATLASlt3;
+		int iATLASgt3;
+		int ilt1;
+		int ilt2;
+		int ilt3;
+		int igt3;
+		int ic0;
+		int ic1;
+		int ic2;
+		int ic3;
+		int ic4;
+		int ic5;
+		int ic6;
+		int ic7;
+		int ic8;
+		int ic9;
+		int ic10;
+		int ic11;
+		int ic12;
+		int ic13;
+		int ic14;
+		int ic15;
+		int ireject;
+		std::string plotname_start;
+		std::string plotname_end;
+};
+#endif

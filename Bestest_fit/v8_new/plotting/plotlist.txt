@@ -1,0 +1,525 @@
+#0 ----> fl;
+#1 ----> fh;
+#2 ----> mh0;
+#3 ----> ma0;
+#4 ----> mhh;
+#5 ----> tB;
+#6 ----> tA;
+#7 ----> tG;
+#8 ----> t12;
+#9 ----> t13;
+#10 ----> sigfact;
+#11 ----> kG;
+#12 ----> kY;
+#13 ----> kL;
+#14 ----> mhc;
+#15 ----> mphi0;
+#16 ----> mphic;
+#17 ----> meta0;
+#18 ----> metac;
+#19 ----> msigma;
+#20 ----> mtau;
+#21 ----> muq;
+#22 ----> mdq;
+#23 ----> msq;
+#24 ----> mcq;
+#25 ----> mbq;
+#26 ----> mtq;
+#27 ----> mTu;
+#28 ----> mTd;
+#29 ----> mTb5;
+#30 ----> mTb2;
+#31 ----> mT5;
+#32 ----> mT6;
+#33 ----> mWblh;
+#34 ----> mZblh;
+#35 ----> mW';
+#36 ----> mZ';
+#37 ----> tanalpha;
+#38 ----> sin(alpha+beta);
+#39 ----> rDShgg;
+#40 ----> iDShgg;
+#41 ----> rShgg;
+#42 ----> iShgg;
+#43 ----> rDShyy;
+#44 ----> iDShyy;
+#45 ----> rShyy;
+#46 ----> iShyy;
+#47 ----> rDSHgg;
+#48 ----> iDSHgg;
+#49 ----> rSHgg;
+#50 ----> iSHgg;
+#51 ----> rDSHyy;
+#52 ----> iDSHyy;
+#53 ----> rSHyy;
+#54 ----> iSHyy;
+#55 ----> rDSAgg;
+#56 ----> iDSAgg;
+#57 ----> rSAgg;
+#58 ----> iSAgg;
+#59 ----> rDSAyy;
+#60 ----> iDSAyy;
+#61 ----> rSAyy;
+#62 ----> iSAyy;
+#63 ----> yv;
+#64 ----> ratioof wmass (blh/SM);
+#65 ----> ywff;
+#66 ----> yzff;
+#67 ----> yhHH;
+#68 ----> yhphiphi;
+#69 ----> yhetaeta;
+#70 ----> yHHH;
+#71 ----> yHphiphi;
+#72 ----> yHetaeta;
+#73 ----> yAHH;
+#74 ----> yAphiphi;
+#75 ----> yAetaeta;
+#76 ----> yhtata;
+#77 ----> yHtata;
+#78 ----> yAtata;
+#79 ----> yhuu;
+#80 ----> yhdd;
+#81 ----> yhcc;
+#82 ----> yhss;
+#83 ----> yhbb;
+#84 ----> yhtt;
+#85 ----> yhTuTu;
+#86 ----> yhTdTd;
+#87 ----> yhTb5Tb5;
+#88 ----> yhTb2Tb2;
+#89 ----> yhT5T5;
+#90 ----> yhT6T6;
+#91 ----> yHuu;
+#92 ----> yHdd;
+#93 ----> yHcc;
+#94 ----> yHss;
+#95 ----> yHbb;
+#96 ----> yHtt;
+#97 ----> yHTuTu;
+#98 ----> yHTdTd;
+#99 ----> yHTb5Tb5;
+#100 ----> yHTb2Tb2;
+#101 ----> yHT5T5;
+#102 ----> yHT6T6;
+#103 ----> yAuu;
+#104 ----> yAdd;
+#105 ----> yAcc;
+#106 ----> yAss;
+#107 ----> yAbb;
+#108 ----> yAtt;
+#109 ----> yATuTu;
+#110 ----> yATdTd;
+#111 ----> yATb5Tb5;
+#112 ----> yATb2Tb2;
+#113 ----> yAT5T5;
+#114 ----> yAT6T6;
+#115 ----> yhww;
+#116 ----> yHww;
+#117 ----> yAww;
+#118 ----> yhwpwp;
+#119 ----> yHwpwp;
+#120 ----> yAwpwp;
+#121 ----> Chtt;
+#122 ----> Chbb;
+#123 ----> Chcc;
+#124 ----> Chtata;
+#125 ----> ChWW;
+#126 ----> ChZZ;
+#127 ----> Chyy;
+#128 ----> ChyZ;
+#129 ----> Chgg;
+#130 ----> CHtt;
+#131 ----> CHbb;
+#132 ----> CHcc;
+#133 ----> CHtata;
+#134 ----> CHWW;
+#135 ----> CHZZ;
+#136 ----> CHyy;
+#137 ----> CHyZ;
+#138 ----> CHgg;
+#139 ----> CAtt;
+#140 ----> CAbb;
+#141 ----> CAcc;
+#142 ----> CAtata;
+#143 ----> CAWW;
+#144 ----> CAZZ;
+#145 ----> CAyy;
+#146 ----> CAyZ;
+#147 ----> CAgg;
+#148 ----> rShyyu;
+#149 ----> iShyyu;
+#150 ----> rShyyd;
+#151 ----> iShyyd;
+#152 ----> rShyys;
+#153 ----> iShyys;
+#154 ----> rShyyc;
+#155 ----> iShyyc;
+#156 ----> rShyyb;
+#157 ----> iShyyb;
+#158 ----> rShyyt;
+#159 ----> iShyyt;
+#160 ----> rShyyTu;
+#161 ----> iShyyTu;
+#162 ----> rShyyTd;
+#163 ----> iShyyTd;
+#164 ----> rShyyTb5;
+#165 ----> iShyyTb5;
+#166 ----> rShyyTb2;
+#167 ----> iShyyTb2;
+#168 ----> rShyyT5;
+#169 ----> iShyyT5;
+#170 ----> rShyyT6;
+#171 ----> iShyyT6;
+#172 ----> rShggu;
+#173 ----> iShggu;
+#174 ----> rShggd;
+#175 ----> iShggd;
+#176 ----> rShggs;
+#177 ----> iShggs;
+#178 ----> rShggc;
+#179 ----> iShggc;
+#180 ----> rShggb;
+#181 ----> iShggb;
+#182 ----> rShggt;
+#183 ----> iShggt;
+#184 ----> rShggTu;
+#185 ----> iShggTu;
+#186 ----> rShggTd;
+#187 ----> iShggTd;
+#188 ----> rShggTb5;
+#189 ----> iShggTb5;
+#190 ----> rShggTb2;
+#191 ----> iShggTb2;
+#192 ----> rShggT5;
+#193 ----> iShggT5;
+#194 ----> rShggT6;
+#195 ----> iShggT6;
+#196 ----> rSHyyu;
+#197 ----> iSHyyu;
+#198 ----> rSHyyd;
+#199 ----> iSHyyd;
+#200 ----> rSHyys;
+#201 ----> iSHyys;
+#202 ----> rSHyyc;
+#203 ----> iSHyyc;
+#204 ----> rSHyyb;
+#205 ----> iSHyyb;
+#206 ----> rSHyyt;
+#207 ----> iSHyyt;
+#208 ----> rSHyyTu;
+#209 ----> iSHyyTu;
+#210 ----> rSHyyTd;
+#211 ----> iSHyyTd;
+#212 ----> rSHyyTb5;
+#213 ----> iSHyyTb5;
+#214 ----> rSHyyTb2;
+#215 ----> iSHyyTb2;
+#216 ----> rSHyyT5;
+#217 ----> iSHyyT5;
+#218 ----> rSHyyT6;
+#219 ----> iSHyyT6;
+#220 ----> rSHggu;
+#221 ----> iSHggu;
+#222 ----> rSHggd;
+#223 ----> iSHggd;
+#224 ----> rSHggs;
+#225 ----> iSHggs;
+#226 ----> rSHggc;
+#227 ----> iSHggc;
+#228 ----> rSHggb;
+#229 ----> iSHggb;
+#230 ----> rSHggt;
+#231 ----> iSHggt;
+#232 ----> rSHggTu;
+#233 ----> iSHggTu;
+#234 ----> rSHggTd;
+#235 ----> iSHggTd;
+#236 ----> rSHggTb5;
+#237 ----> iSHggTb5;
+#238 ----> rSHggTb2;
+#239 ----> iSHggTb2;
+#240 ----> rSHggT5;
+#241 ----> iSHggT5;
+#242 ----> rSHggT6;
+#243 ----> iSHggT6;
+#244 ----> rSAyyu;
+#245 ----> iSAyyu;
+#246 ----> rSAyyd;
+#247 ----> iSAyyd;
+#248 ----> rSAyys;
+#249 ----> iSAyys;
+#250 ----> rSAyyc;
+#251 ----> iSAyyc;
+#252 ----> rSAyyb;
+#253 ----> iSAyyb;
+#254 ----> rSAyyt;
+#255 ----> iSAyyt;
+#256 ----> rSAyyTu;
+#257 ----> iSAyyTu;
+#258 ----> rSAyyTd;
+#259 ----> iSAyyTd;
+#260 ----> rSAyyTb5;
+#261 ----> iSAyyTb5;
+#262 ----> rSAyyTb2;
+#263 ----> iSAyyTb2;
+#264 ----> rSAyyT5;
+#265 ----> iSAyyT5;
+#266 ----> rSAyyT6;
+#267 ----> iSAyyT6;
+#268 ----> rSAggu;
+#269 ----> iSAggu;
+#270 ----> rSAggd;
+#271 ----> iSAggd;
+#272 ----> rSAggs;
+#273 ----> iSAggs;
+#274 ----> rSAggc;
+#275 ----> iSAggc;
+#276 ----> rSAggb;
+#277 ----> iSAggb;
+#278 ----> rSAggt;
+#279 ----> iSAggt;
+#280 ----> rSAggTu;
+#281 ----> iSAggTu;
+#282 ----> rSAggTd;
+#283 ----> iSAggTd;
+#284 ----> rSAggTb5;
+#285 ----> iSAggTb5;
+#286 ----> rSAggTb2;
+#287 ----> iSAggTb2;
+#288 ----> rSAggT5;
+#289 ----> iSAggT5;
+#290 ----> rSAggT6;
+#291 ----> iSAggT6;
+#292 ----> rShyyta;
+#293 ----> iShyyta;
+#294 ----> rSHyyta;
+#295 ----> iSHyyta;
+#296 ----> rSAyyta;
+#297 ----> iSAyyta;
+#298 ----> rShyyw;
+#299 ----> iShyyw;
+#300 ----> rShyywp;
+#301 ----> iShyywp;
+#302 ----> rSHyyw;
+#303 ----> iSHyyw;
+#304 ----> rSHyywp;
+#305 ----> iSHyywp;
+#306 ----> rShyyH;
+#307 ----> iShyyH;
+#308 ----> rShyyeta;
+#309 ----> iShyyeta;
+#310 ----> rShyyphi;
+#311 ----> iShyyphi;
+#312 ----> rSHyyH;
+#313 ----> iSHyyH;
+#314 ----> rSHyyeta;
+#315 ----> iSHyyeta;
+#316 ----> rSHyyphi;
+#317 ----> iSHyyphi;
+#318 ----> DeltaM (i.e. mA-mh);
+#319 ----> muCMSyy1;
+#320 ----> muCMSZZ1;
+#321 ----> muCMSZZ2;
+#322 ----> muCMSWW1;
+#323 ----> muCMSbb1;
+#324 ----> muCMStata1;
+#325 ----> muCMStata2;
+#326 ----> muCMSZy1;
+#327 ----> muATLASyy1;
+#328 ----> muATLASZZ1;
+#329 ----> muATLASWW1;
+#330 ----> muATLASWW2;
+#331 ----> muATLASWW3;
+#332 ----> muATLASbb1;
+#333 ----> muATLAStata1;
+#334 ----> muATLASZy1;
+#335 ----> hmuATLASyy1 (only the h component);
+#336 ----> hmuATLASZZ1 (only the h component);
+#337 ----> hmuATLASWW1 (only the h component);
+#338 ----> hmuATLASWW2 (only the h component);
+#339 ----> hmuATLASWW3 (only the h component);
+#340 ----> hmuATLASbb1 (only the h component);
+#341 ----> hmuATLAStata1 (only the h component);
+#342 ----> hmuATLASZy1 (only the h component);
+#343 ----> AmuATLASyy1 (only the A component);
+#344 ----> AmuATLAStata1 (only the A component);
+#345 ----> AmuATLASZy1 (only the A component);
+#346 ----> HmuATLASyy1 (only the H component);
+#347 ----> HmuATLASZZ1 (only the H component);
+#348 ----> HmuATLASWW1 (only the H component);
+#349 ----> HmuATLASWW2 (only the H component);
+#350 ----> HmuATLASWW3 (only the H component);
+#351 ----> HmuATLASbb1 (only the H component);
+#352 ----> HmuATLAStata1 (only the H component);
+#353 ----> HmuATLASZy1 (only the H component);
+#354 ----> Ratio of S_hyy(heavy quark) to S_hyy(SM states only)
+#355 ----> Ratio of S_hyy(charged scalars) to S_hyy(SM states only)
+#356 ----> S_hyy(Fermion)
+#357 ----> S_hyy(Gauge)
+#358 ----> S_hyy(Scalar)
+#359 ----> ReS_hyy(Fermion)
+#360 ----> ImS_hyy(Fermion)
+#361 ----> ReS_hyy(Gauge)
+#362 ----> ImS_hyy(Gauge)
+#363 ----> ReS_hyy(Scalar)
+#364 ----> ImS_hyy(Scalar)
+#367 ----> BRhbb
+#368 ----> BRhcc
+#369 ----> BRhtata
+#370 ----> BRhWW
+#371 ----> BRhZZ
+#372 ----> BRhyy
+#373 ----> BRhyZ
+#374 ----> BRhgg
+#375 ----> BRHHbb
+#376 ----> BRHHcc
+#377 ----> BRHHtata
+#378 ----> BRHHWW
+#379 ----> BRHHZZ
+#380 ----> BRHHyy
+#381 ----> BRHHyZ
+#382 ----> BRHHgg
+#383 ----> BRHHtt
+#384 ----> BRHHZA
+#385 ----> BRHHWcHc
+#386 ----> BRHHhh
+#387 ----> BRHHAA
+#388 ----> BRhHcHc
+#389 ----> BRAbb
+#390 ----> BRAcc
+#391 ----> BRAtata
+#392 ----> BRAWW
+#393 ----> BRAZZ
+#394 ----> BRAyy
+#395 ----> BRAyZ
+#396 ----> BRAgg
+#397 ----> BRAtt
+#398 ----> BRAZh
+#To add a plot to the list, add a line below of the form x1 x2 y1 y2
+#x1 is the x-axis value on the CMS plot, x2 is the x-axis value on the ATLAS plot
+#y1 is the y-axis value on the CMS plot, y2 is the y-axis value on the ATLAS plot
+#Since there is an ATLAS plot and a CMS plot, it is necessary to have the option to choose
+#between two different sets for the x and y axes values, for when mu values need to 
+#be plotted (integers 319 through 334 only).
+#For all other cases, x1=x2 and y1=y2 should be the case.
+#4 4 375 375
+#4 4 376 376
+#4 4 377 377
+#4 4 378 378
+#4 4 379 379
+#4 4 380 380
+#4 4 381 381
+#4 4 382 382
+#4 4 383 383
+#4 4 384 384
+#4 4 385 385
+#4 4 386 386
+#4 4 387 387
+#4 4 388 388
+#3 3 389 389
+#3 3 390 390
+#3 3 391 391
+#3 3 392 392
+#3 3 393 393
+#3 3 394 394
+#3 3 395 395
+#3 3 396 396
+#3 3 397 397
+#3 3 398 398
+#0 0 32 32
+#0 0 35 35 x x 1000 10000
+#0 0 38 38
+#335 335 343 343 0 1.5 0 1.5
+#335 335 346 346 0 1.5 0 1.5
+#3 3 343 343 x x 0 3
+#3 3 67 67 x x -8 2
+#322 329 320 328 
+#319 327 323 332 0 3 x x
+#319 327 324 333 0 3 0 5
+#319 327 322 329 0 3 0 3
+#319 327 326 334 0 3 0 3
+#319 327 359 359 0 3 0 3
+#319 327 361 361 0 3 -9 0
+#319 327 363 363 0 3 -2 2
+#38 38 67 67 x x 0 3
+#6 6 67 67 x x -8 2
+#5 5 318 318 
+#5 5 343 343 x x 0 3
+#5 5 346 346 x x 0 3
+#5 5 335 335 x x 0 3
+#5 5 3 3
+#5 5 38 38
+#5 5 67 67 x x -8 2
+#4 4 5 5
+#5 5 375 375
+#5 5 376 376
+#5 5 377 377
+#5 5 378 378
+#5 5 379 379
+#5 5 380 380
+#5 5 381 381
+#5 5 382 382
+#5 5 383 383
+#5 5 384 384
+#5 5 385 385
+#5 5 386 386
+#5 5 387 387
+#5 5 388 388
+#5 5 389 389
+#5 5 390 390
+#5 5 391 391
+#5 5 392 392
+#5 5 393 393
+#5 5 394 394
+#5 5 395 395
+#5 5 396 396
+#5 5 397 397
+#5 5 398 398
+#5 5 0 0
+#5 5 1 1
+#5 5 2 2
+#5 5 3 3
+#5 5 4 4
+#5 5 6 6
+#5 5 7 7
+#5 5 8 8
+#5 5 9 9
+#5 5 10 10
+#5 5 11 11
+#5 5 12 12
+#5 5 13 13
+#0 0 324 333 x x 0 5
+#1 1 324 333 x x 0 5
+#2 2 324 333 x x 0 5
+#3 3 324 333 x x 0 5
+#4 4 324 333 x x 0 5
+#5 5 324 333 x x 0 5
+#6 6 324 333 x x 0 5
+#7 7 324 333 x x 0 5
+#8 8 324 333 x x 0 5
+#9 9 324 333 x x 0 5
+#10 10 324 333 x x 0 5
+#11 11 324 333 x x 0 5
+#12 12 324 333 x x 0 5
+#13 13 324 333 x x 0 5
+#5 5 322 329
+#5 5 337 337
+#5 5 348 348
+#4 4 322 329
+#4 4 348 348
+#3 3 343 343
+#4 4 138 138
+#3 3 138 138
+#5 5 138 138
+#138 138 378 378
+#0 0 5 5
+#0 0 4 4
+#0 0 38 38
+#0 0 318 318
+#5 5 4 4
+#5 5 38 38
+#5 5 318 318
+#4 4 38 38
+#4 4 318 318
+#38 38 318 318
+4 4 397 397
