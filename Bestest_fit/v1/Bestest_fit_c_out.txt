@@ -1,0 +1,15 @@
+
+Number of data points = 25007
+
+Minimum chi-squared = 18.5411
+
+Chyy = 1.1031
++1 sigma = 0.12228, -1 sigma = 0.10683
++2 sigma = 0.24506, -2 sigma = 0.206241
++3 sigma = 0.37272, -3 sigma = 0.311843
+
+Chgg = 0.969134
++1 sigma = 0.144416, -1 sigma = 0.091999
++2 sigma = 0.242626, -2 sigma = 0.17356
++3 sigma = 0.322156, -3 sigma = 0.28429
+

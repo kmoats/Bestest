@@ -1,0 +1,4133 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    169178,       4124]
+NotebookOptionsPosition[    166520,       4047]
+NotebookOutlinePosition[    166861,       4062]
+CellTagsIndexPosition[    166818,       4059]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Lgauge", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"(", 
+       RowBox[{"1", "/", "4"}], ")"}]}], 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"a", "=", "1"}], "3"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"W1", "[", 
+          RowBox[{"a", ",", "\[Alpha]", ",", "\[Beta]"}], "]"}], 
+         RowBox[{"W1", "[", 
+          RowBox[{"a", ",", "\[Alpha]", ",", "\[Beta]"}], "]"}]}], "+", 
+        RowBox[{
+         RowBox[{"W2", "[", 
+          RowBox[{"a", ",", "\[Alpha]", ",", "\[Beta]"}], "]"}], 
+         RowBox[{"W2", "[", 
+          RowBox[{"a", ",", "\[Alpha]", ",", "\[Beta]"}], "]"}]}]}], 
+       ")"}]}]}], "/.", "gaugestatespostEWSB"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5129394809007397`*^9, 3.5129395811754513`*^9}, {
+   3.512993390001339*^9, 3.512993407783983*^9}, 3.513004630077633*^9, {
+   3.513084912871204*^9, 3.5130849333104258`*^9}, {3.513873693154236*^9, 
+   3.513873719088273*^9}, {3.575131586248893*^9, 3.575131590216702*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", "**", " ", "3"}], "-", 
+    RowBox[{"Gauge", " ", "Feynman", " ", "Rules"}]}], "*****)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+  "\"\<In these \!\(\*SubsuperscriptBox[\(V\), \(1\), \(\(\\\ \
+\)\(\[Mu]\)\)]\)(\!\(\*SubscriptBox[\(k\), \(1\)]\)) \!\(\*SubsuperscriptBox[\
+\(V\), \(2\), \(\(\\\ \)\(\[Nu]\)\)]\)(\!\(\*SubscriptBox[\(k\), \(2\)]\)) \!\
+\(\*SubsuperscriptBox[\(V\), \(3\), \(\(\\\ \
+\)\(\[Rho]\)\)]\)(\!\(\*SubscriptBox[\(k\), \(3\)]\)) Feynman Rules:\n- all \
+momenta are assumed to be incoming\n- a factor of \
+[\!\(\*SuperscriptBox[\(g\), \(\[Mu]\[Nu]\)]\)(\!\(\*SubscriptBox[\(k\), \
+\(1\)]\)-\!\(\*SubscriptBox[\(k\), \(2\)]\)\!\(\*SuperscriptBox[\()\), \(\
+\[Rho]\)]\) + \!\(\*SuperscriptBox[\(g\), \
+\(\[Nu]\[Rho]\)]\)(\!\(\*SubscriptBox[\(k\), \
+\(2\)]\)-\!\(\*SubscriptBox[\(k\), \(3\)]\)\!\(\*SuperscriptBox[\()\), \
+\(\[Mu]\)]\) + \!\(\*SuperscriptBox[\(g\), \
+\(\[Rho]\[Mu]\)]\)(\!\(\*SubscriptBox[\(k\), \
+\(3\)]\)-\!\(\*SubscriptBox[\(k\), \(1\)]\)\!\(\*SuperscriptBox[\()\), \
+\(\[Nu]\)]\)] must also be included\>\"", "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"L3G", "[", 
+       RowBox[{"i", ",", "j", ",", "k"}], "]"}], "=", 
+      RowBox[{"Simplify", "[", 
+       RowBox[{"Series", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k1", "\[Nu]"], 
+               SubscriptBox["g", "\[Mu]\[Rho]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"\[Beta]", ",", "\[Alpha]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k1", "\[Rho]"], 
+               SubscriptBox["g", "\[Mu]\[Nu]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k1", "\[Rho]"], 
+               SubscriptBox["g", "\[Mu]\[Nu]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", 
+                 RowBox[{"\[Beta]", ",", "\[Alpha]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k1", "\[Nu]"], 
+               SubscriptBox["g", "\[Mu]\[Rho]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", 
+                 RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k2", "\[Rho]"], 
+               SubscriptBox["g", "\[Mu]\[Nu]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", 
+                 RowBox[{"\[Beta]", ",", "\[Alpha]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k2", "\[Mu]"], 
+               SubscriptBox["g", "\[Nu]\[Rho]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", 
+                 RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k2", "\[Mu]"], 
+               SubscriptBox["g", "\[Nu]\[Rho]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", 
+                 RowBox[{"\[Beta]", ",", "\[Alpha]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k2", "\[Rho]"], 
+               SubscriptBox["g", "\[Mu]\[Nu]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", 
+                 RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k3", "\[Mu]"], 
+               SubscriptBox["g", "\[Nu]\[Rho]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", 
+                 RowBox[{"\[Beta]", ",", "\[Alpha]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k3", "\[Nu]"], 
+               SubscriptBox["g", "\[Mu]\[Rho]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", 
+                 RowBox[{"\[Alpha]", ",", "\[Beta]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k3", "\[Nu]"], 
+               SubscriptBox["g", "\[Mu]\[Rho]"]}], ")"}]}], "+", 
+            RowBox[{
+             RowBox[{"Coefficient", "[", 
+              RowBox[{"Lgauge", ",", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"dGauge", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "[", 
+                 RowBox[{"\[Beta]", ",", "\[Alpha]"}], "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+                RowBox[{
+                 RowBox[{"Gauge", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+              "]"}], 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "\[ImaginaryI]"}], " ", 
+               SubscriptBox["k3", "\[Mu]"], 
+               SubscriptBox["g", "\[Nu]\[Rho]"]}], ")"}]}]}], ")"}], "/.", 
+          "gaugemixingangles"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"v", ",", "0", ",", "2"}], "}"}]}], "]"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "7"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"GGG", "[", 
+       RowBox[{"i", ",", "j", ",", "k"}], "]"}], "=", " ", 
+      RowBox[{"\[ImaginaryI]", " ", 
+       RowBox[{"Series", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"L3G", "[", 
+           RowBox[{"i", ",", "j", ",", "k"}], "]"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             SubscriptBox["g", "\[Mu]\[Nu]"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               SubscriptBox["k1", "\[Rho]"], "-", 
+               SubscriptBox["k2", "\[Rho]"]}], ")"}]}], "+", 
+            RowBox[{
+             SubscriptBox["g", "\[Nu]\[Rho]"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               SubscriptBox["k2", "\[Mu]"], "-", 
+               SubscriptBox["k3", "\[Mu]"]}], ")"}]}], "+", 
+            RowBox[{
+             SubscriptBox["g", "\[Mu]\[Rho]"], " ", 
+             RowBox[{"(", 
+              RowBox[{
+               SubscriptBox["k3", "\[Nu]"], "-", 
+               SubscriptBox["k1", "\[Nu]"]}], ")"}]}]}], ")"}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"v", ",", "0", ",", "2"}], "}"}]}], "]"}]}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "7"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "1"}], "&&", 
+          RowBox[{
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], "\[Equal]", 
+           RowBox[{"-", "1"}]}], "&&", 
+          RowBox[{
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "0"}]}], ")"}], "&&", 
+        
+        RowBox[{"TrueQ", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "+", 
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], "+", 
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "k", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}]}], ",", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+         SubscriptBox[
+          RowBox[{"Gauge", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "\[Mu]"], ",", 
+         "\"\<(\!\(\*SubscriptBox[\(k\), \(1\)]\)) \>\"", ",", 
+         SubscriptBox[
+          RowBox[{"Gauge", "[", 
+           RowBox[{"[", "j", "]"}], "]"}], "\[Nu]"], ",", 
+         "\"\<(\!\(\*SubscriptBox[\(k\), \(2\)]\)) \>\"", ",", 
+         SubscriptBox[
+          RowBox[{"Gauge", "[", 
+           RowBox[{"[", "k", "]"}], "]"}], "\[Rho]"], ",", 
+         "\"\<(\!\(\*SubscriptBox[\(k\), \(3\)]\)) \>\"", ",", "\"\< : \>\"", 
+         ",", 
+         RowBox[{"GGG", "[", 
+          RowBox[{"i", ",", "j", ",", "k"}], "]"}]}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "7"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DumpSave", "[", 
+     RowBox[{
+     "\"\<../kmoats/Documents/Research/Bestest/Bestest_Mathematica/Feynman_\
+Rules/GGG\>\"", ",", "GGG"}], "]"}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.513516293422906*^9, 3.513516293669269*^9}, {
+   3.513815368284318*^9, 3.5138155020334253`*^9}, {3.513815705975437*^9, 
+   3.5138157069383574`*^9}, {3.513886121831287*^9, 3.513886156668638*^9}, {
+   3.513886187380352*^9, 3.513886225482074*^9}, {3.5138862920857267`*^9, 
+   3.51388642550966*^9}, {3.513886461765339*^9, 3.513886701612273*^9}, 
+   3.513886762877502*^9, {3.5138868216239157`*^9, 3.51388693395199*^9}, {
+   3.51388696953613*^9, 3.5138872026457987`*^9}, {3.513887235043805*^9, 
+   3.513887262090844*^9}, {3.513887363097043*^9, 3.513887406022697*^9}, {
+   3.513887613576706*^9, 3.513887619233489*^9}, {3.513887723935701*^9, 
+   3.513887726909856*^9}, {3.513887791571253*^9, 3.513887801786818*^9}, 
+   3.513888014510085*^9, {3.5138882960382853`*^9, 3.513888325337687*^9}, 
+   3.513888866636051*^9, {3.513888968324953*^9, 3.513888984282858*^9}, {
+   3.5138890181606283`*^9, 3.513889091506271*^9}, {3.513889393478017*^9, 
+   3.51388939671659*^9}, {3.5138895221677637`*^9, 3.513889761379096*^9}, {
+   3.513889805334626*^9, 3.513889886645626*^9}, {3.51388993362927*^9, 
+   3.513889955402788*^9}, {3.513889989764542*^9, 3.513890026702819*^9}, {
+   3.513890072839487*^9, 3.513890102483333*^9}, {3.5138901566337976`*^9, 
+   3.513890164560165*^9}, {3.513890263974949*^9, 3.513890264478888*^9}, {
+   3.513890523864985*^9, 3.51389054237029*^9}, {3.513891154703096*^9, 
+   3.513891192110882*^9}, {3.513891284538451*^9, 3.513891380929632*^9}, {
+   3.513891440780478*^9, 3.513891446337981*^9}, {3.513891575418407*^9, 
+   3.513891617960022*^9}, {3.513891648834041*^9, 3.5138916665516653`*^9}, {
+   3.513891841550007*^9, 3.51389196649299*^9}, {3.513892161930544*^9, 
+   3.513892216195969*^9}, {3.513892315837377*^9, 3.513892345564617*^9}, {
+   3.5138924203054333`*^9, 3.5138925410217447`*^9}, {3.51389262389456*^9, 
+   3.5138926319501743`*^9}, {3.5138926996967497`*^9, 3.513892826534029*^9}, {
+   3.513892876061866*^9, 3.513892891801248*^9}, {3.513892964905477*^9, 
+   3.513892978310548*^9}, {3.5138930447311487`*^9, 3.513893051261773*^9}, 
+   3.5140364657502193`*^9, {3.514207888595243*^9, 3.514207892402519*^9}, {
+   3.514207931168478*^9, 3.514208080692182*^9}, {3.5142081404212227`*^9, 
+   3.514208187645771*^9}, {3.514208556582489*^9, 3.514208579275312*^9}, {
+   3.51534235308848*^9, 3.515342367019627*^9}, {3.5249300261605186`*^9, 
+   3.524930026587267*^9}, 3.5748568258683558`*^9, {3.5751303224105053`*^9, 
+   3.575130350745851*^9}, {3.575208316498749*^9, 3.575208317464654*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"In these \\!\\(\\*SubsuperscriptBox[\\(V\\), \\(1\\), \
+\\(\\(\\\\ \\)\\(\[Mu]\\)\\)]\\)(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \
+\\!\\(\\*SubsuperscriptBox[\\(V\\), \\(2\\), \\(\\(\\\\ \
+\\)\\(\[Nu]\\)\\)]\\)(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \
+\\!\\(\\*SubsuperscriptBox[\\(V\\), \\(3\\), \\(\\(\\\\ \
+\\)\\(\[Rho]\\)\\)]\\)(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) Feynman \
+Rules:\\n- all momenta are assumed to be incoming\\n- a factor of \
+[\\!\\(\\*SuperscriptBox[\\(g\\), \\(\[Mu]\[Nu]\\)]\\)(\\!\\(\\*SubscriptBox[\
+\\(k\\), \\(1\\)]\\)-\\!\\(\\*SubscriptBox[\\(k\\), \
+\\(2\\)]\\)\\!\\(\\*SuperscriptBox[\\()\\), \\(\[Rho]\\)]\\) + \
+\\!\\(\\*SuperscriptBox[\\(g\\), \\(\[Nu]\[Rho]\\)]\\)(\\!\\(\\*SubscriptBox[\
+\\(k\\), \\(2\\)]\\)-\\!\\(\\*SubscriptBox[\\(k\\), \
+\\(3\\)]\\)\\!\\(\\*SuperscriptBox[\\()\\), \\(\[Mu]\\)]\\) + \
+\\!\\(\\*SuperscriptBox[\\(g\\), \\(\[Rho]\[Mu]\\)]\\)(\\!\\(\\*SubscriptBox[\
+\\(k\\), \\(3\\)]\\)-\\!\\(\\*SubscriptBox[\\(k\\), \
+\\(1\\)]\\)\\!\\(\\*SuperscriptBox[\\()\\), \\(\[Nu]\\)]\\)] must also be \
+included\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.513891303031369*^9, {3.5138913734400663`*^9, 3.513891386477819*^9}, 
+   3.513891447346733*^9, 3.513891489362742*^9, 3.513891619534333*^9, {
+   3.513891653300568*^9, 3.513891667394765*^9}, {3.513891848934278*^9, 
+   3.513891935670328*^9}, 3.5138919673824997`*^9, {3.5138921691951036`*^9, 
+   3.513892216585711*^9}, 3.513892325618124*^9, 3.513892396723074*^9, 
+   3.513892542443474*^9, 3.513892608676841*^9, 3.513892660807929*^9, 
+   3.513892738476533*^9, 3.513892784015737*^9, {3.513892819218082*^9, 
+   3.513892826933536*^9}, {3.51389296832686*^9, 3.5138929787475643`*^9}, 
+   3.513893110288384*^9, 3.5140335571701307`*^9, 3.51404084041791*^9, 
+   3.514115416828815*^9, 3.514128057692514*^9, 3.514208106059379*^9, 
+   3.514208190391842*^9, 3.5142140494644833`*^9, 3.524930033124134*^9, 
+   3.559056552892593*^9, 3.560458543550158*^9, 3.575131657028202*^9, 
+   3.575218070543676*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox["\[Gamma]", "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", "g", " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}]}]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g Sin[$CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g Sin[$CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074862699*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", "g", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}]}]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g Cos[$CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[$CellContext`Z, $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g Cos[$CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074864256*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", "g", " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 
+         1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g \
+$CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 
+        1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g \
+$CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074866255*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox["\[Gamma]", "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{"O", "(", 
+      SuperscriptBox["v", "3"], ")"}],
+     SeriesData[$CellContext`v, 0, {}, 3, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {}, 3, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074868087*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", "g", " ", "xs", " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 
+         1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g \
+$CellContext`xs}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[$CellContext`Z, $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 
+        1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g \
+$CellContext`xs}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074870226*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", "g"}]}], "-", 
+      FractionBox[
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", "g", " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g, 0, 
+       Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g $CellContext`xs Cos[$CellContext`\[Theta]W] 
+       Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g, 0, 
+      Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g $CellContext`xs Cos[$CellContext`\[Theta]W] 
+      Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.5752180748724203`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox["\[Gamma]", "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{"O", "(", 
+      SuperscriptBox["v", "3"], ")"}],
+     SeriesData[$CellContext`v, 0, {}, 3, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {}, 3, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074874218*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", "g", " ", "xs", " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 
+         1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g \
+$CellContext`xs}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[$CellContext`Z, $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 
+        1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g \
+$CellContext`xs}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074894167*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", "g"}]}], "-", 
+      FractionBox[
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", "g", " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g, 0, 
+       Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g $CellContext`xs Cos[$CellContext`\[Theta]W] 
+       Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g, 0, 
+      Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g $CellContext`xs Cos[$CellContext`\[Theta]W] 
+      Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074930361*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox["\[Gamma]", "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", "g", " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}]}]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g Sin[$CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g Sin[$CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.5752180749624767`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", "g", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", "g", " ", "xs", " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g Cos[$CellContext`\[Theta]W], 0, 
+       Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g $CellContext`xs Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[$CellContext`Z, $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g Cos[$CellContext`\[Theta]W], 0, 
+      Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g $CellContext`xs Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218074997209*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(1\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(2\\)]\\)) \"\
+\>", "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], 
+    "\[InvisibleSpace]", "\<\"(\\!\\(\\*SubscriptBox[\\(k\\), \\(3\\)]\\)) \"\
+\>", "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"2", " ", "\[ImaginaryI]", " ", "g", " ", 
+       RowBox[{"cot", "(", 
+        RowBox[{"2", " ", "\[Theta]g"}], ")"}]}], "-", 
+      FractionBox[
+       RowBox[{"3", " ", "\[ImaginaryI]", " ", "g", " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 2] $CellContext`g Cot[2 $CellContext`\[Theta]g], 0, 
+       Complex[0, -3] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g $CellContext`xs Cos[$CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(1\)]\)) ", 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Nu]], 
+    "(\!\(\*SubscriptBox[\(k\), \(2\)]\)) ", 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Rho]], 
+    "(\!\(\*SubscriptBox[\(k\), \(3\)]\)) ", " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 2] $CellContext`g Cot[2 $CellContext`\[Theta]g], 0, 
+      Complex[0, -3] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g $CellContext`xs Cos[$CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{
+  3.5138913059041*^9, {3.513891374272853*^9, 3.513891387295761*^9}, 
+   3.5138914481764097`*^9, 3.5138914901979713`*^9, 3.513891621628132*^9, {
+   3.5138916541533613`*^9, 3.513891668228011*^9}, {3.513891849778599*^9, 
+   3.513891936493949*^9}, 3.513891968210762*^9, {3.5138921692618732`*^9, 
+   3.513892217401203*^9}, 3.51389232647648*^9, 3.513892400060614*^9, 
+   3.5138925432690277`*^9, 3.5138926120985727`*^9, 3.513892663838417*^9, 
+   3.5138927393249273`*^9, 3.51389278487171*^9, {3.513892820052589*^9, 
+   3.513892827798499*^9}, {3.513892969180702*^9, 3.513892979590597*^9}, 
+   3.513893113214574*^9, 3.514033562020459*^9, 3.514040843368142*^9, 
+   3.514115419788673*^9, 3.514128060596011*^9, 3.514208110881442*^9, 
+   3.514208191895071*^9, 3.514214054417164*^9, 3.524930038214169*^9, 
+   3.559056557975586*^9, 3.560458548626128*^9, 3.575131661307045*^9, 
+   3.575218075025257*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"**", 
+     RowBox[{"*", " ", "4"}]}], "-", 
+    RowBox[{"Gauge", " ", "Feynman", " ", "Rules"}]}], " ", "****)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"L4G", "[", 
+       RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "=", 
+      RowBox[{"Simplify", "[", 
+       RowBox[{"Series", "[", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"Coefficient", "[", 
+             RowBox[{"Lgauge", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", "\[Alpha]", "]"}], " ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], "[", "\[Alpha]", "]"}], " ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "[", "\[Beta]", "]"}], " ", 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "l", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+             "]"}], 
+            SubscriptBox["g", "\[Mu]\[Nu]"], 
+            SubscriptBox["g", "\[Rho]\[Sigma]"], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"i", ",", "j"}], "]"}], "+", "1"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"k", ",", "l"}], "]"}], "+", "1"}], ")"}]}], "+", " ", 
+           
+           RowBox[{
+            RowBox[{"Coefficient", "[", 
+             RowBox[{"Lgauge", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", "\[Alpha]", "]"}], " ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "l", "]"}], "]"}], "[", "\[Alpha]", "]"}], " ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], "[", "\[Beta]", "]"}], " ", 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+             "]"}], 
+            SubscriptBox["g", "\[Mu]\[Sigma]"], 
+            SubscriptBox["g", "\[Nu]\[Rho]"], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"i", ",", "l"}], "]"}], "+", "1"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"j", ",", "k"}], "]"}], "+", "1"}], ")"}]}], "+", " ", 
+           
+           RowBox[{
+            RowBox[{"Coefficient", "[", 
+             RowBox[{"Lgauge", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", "\[Alpha]", "]"}], " ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "l", "]"}], "]"}], "[", "\[Beta]", "]"}], "  ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+             "]"}], 
+            SubscriptBox["g", "\[Mu]\[Rho]"], 
+            SubscriptBox["g", "\[Nu]\[Sigma]"], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"i", ",", "k"}], "]"}], "+", "1"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"l", ",", "j"}], "]"}], "+", "1"}], ")"}]}], "+", " ", 
+           
+           RowBox[{
+            RowBox[{"Coefficient", "[", 
+             RowBox[{"Lgauge", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], "[", "\[Alpha]", "]"}], " ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "[", "\[Alpha]", "]"}], " ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", "\[Beta]", "]"}], " ", 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "l", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+             "]"}], 
+            SubscriptBox["g", "\[Nu]\[Rho]"], 
+            SubscriptBox["g", "\[Mu]\[Sigma]"], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"j", ",", "k"}], "]"}], "+", "1"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"i", ",", "l"}], "]"}], "+", "1"}], ")"}]}], "+", " ", 
+           
+           RowBox[{
+            RowBox[{"Coefficient", "[", 
+             RowBox[{"Lgauge", ",", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "l", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", "\[Beta]", "]"}], " ", 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+             "]"}], 
+            SubscriptBox["g", "\[Nu]\[Sigma]"], 
+            SubscriptBox["g", "\[Mu]\[Rho]"], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"j", ",", "l"}], "]"}], "+", "1"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"i", ",", "k"}], "]"}], "+", "1"}], ")"}]}], "+", " ", 
+           
+           RowBox[{
+            RowBox[{"Coefficient", "[", 
+             RowBox[{"Lgauge", ",", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "[", "\[Alpha]", "]"}], " ", 
+               
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "l", "]"}], "]"}], "[", "\[Alpha]", "]"}], 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], "[", "\[Beta]", "]"}], " ", 
+               RowBox[{
+                RowBox[{"Gauge", "[", 
+                 RowBox[{"[", "j", "]"}], "]"}], "[", "\[Beta]", "]"}]}]}], 
+             "]"}], 
+            SubscriptBox["g", "\[Rho]\[Sigma]"], 
+            SubscriptBox["g", "\[Mu]\[Nu]"], 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"k", ",", "l"}], "]"}], "+", "1"}], ")"}], " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"KroneckerDelta", "[", 
+               RowBox[{"i", ",", "j"}], "]"}], "+", "1"}], ")"}]}]}], "/.", 
+          "gaugemixingangles"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"v", ",", "0", ",", "2"}], "}"}]}], "]"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"l", ",", "7"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"GGGG", "[", 
+       RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "=", 
+      RowBox[{"Simplify", "[", 
+       RowBox[{"Series", "[", 
+        RowBox[{
+         RowBox[{"\[ImaginaryI]", " ", 
+          RowBox[{
+           RowBox[{"L4G", "[", 
+            RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "/", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"2", " ", 
+              SubscriptBox["g", "\[Mu]\[Nu]"], " ", 
+              SubscriptBox["g", "\[Rho]\[Sigma]"]}], "-", 
+             RowBox[{
+              SubscriptBox["g", "\[Mu]\[Rho]"], " ", 
+              SubscriptBox["g", "\[Nu]\[Sigma]"]}], "-", 
+             RowBox[{
+              SubscriptBox["g", "\[Mu]\[Sigma]"], " ", 
+              SubscriptBox["g", "\[Nu]\[Rho]"]}]}], ")"}]}]}], ",", 
+         RowBox[{"{", 
+          RowBox[{"v", ",", "0", ",", "2"}], "}"}]}], "]"}], "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"l", ",", "7"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"DumpSave", "[", 
+     RowBox[{
+     "\"\<../kmoats/Documents/Research/Bestest/Bestest_Mathematica/Feynman_\
+Rules/GGGG\>\"", ",", "GGGG"}], "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.513880785321837*^9, 3.513880795361989*^9}, {
+   3.513880910663321*^9, 3.51388092364235*^9}, {3.5138824899094343`*^9, 
+   3.513882495370558*^9}, {3.5138828432587423`*^9, 3.513882947254993*^9}, {
+   3.5138830191119204`*^9, 3.513883083824366*^9}, {3.51388318774821*^9, 
+   3.5138834249602947`*^9}, {3.513883480142527*^9, 3.51388350556604*^9}, {
+   3.513889258271243*^9, 3.5138892828275414`*^9}, {3.513892637221093*^9, 
+   3.513892642300591*^9}, {3.513893073804644*^9, 3.5138930788932867`*^9}, {
+   3.514033535328781*^9, 3.514033538308154*^9}, {3.5140336421356688`*^9, 
+   3.5140336439885387`*^9}, 3.514036445942953*^9, {3.5141169484038467`*^9, 
+   3.514116957507017*^9}, {3.5142083045696087`*^9, 3.514208329079792*^9}, 
+   3.574856844105177*^9, {3.575130360392065*^9, 3.575130369691399*^9}, {
+   3.5752083204644127`*^9, 3.575208321376466*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{"\"\<In these \!\(\*SubsuperscriptBox[\(W\), \(1\), \(+\\\ \
+\[Mu]\)]\)\!\(\*SubsuperscriptBox[\(W\), \(2\), \(+\\\ \
+\[Nu]\)]\)\!\(\*SubsuperscriptBox[\(W\), \(3\), \(-\\\ \
+\[Rho]\)]\)\!\(\*SubsuperscriptBox[\(W\), \(4\), \(-\\\ \[Sigma]\)]\) Feynman \
+Rules\na factor of  (2\!\(\*SubscriptBox[\(g\), \
+\(\[Mu]\[Nu]\)]\)\!\(\*SubscriptBox[\(g\), \(\[Rho]\[Sigma]\)]\) - \
+\!\(\*SubscriptBox[\(g\), \(\[Mu]\[Rho]\)]\)\!\(\*SubscriptBox[\(g\), \(\[Nu]\
+\[Sigma]\)]\) - \!\(\*SubscriptBox[\(g\), \
+\(\[Mu]\[Sigma]\)]\)\!\(\*SubscriptBox[\(g\), \(\[Nu]\[Rho]\)]\)) must also \
+be included\>\"", "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"i", "\[Equal]", "3"}], "||", 
+          RowBox[{"i", "\[Equal]", "6"}]}], ")"}], "&&", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"j", "\[Equal]", "3"}], "||", 
+          RowBox[{"j", "\[Equal]", "6"}]}], ")"}]}], ")"}], "&&", 
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "l", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}]}], ",", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+       SubscriptBox[
+        RowBox[{"Gauge", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "\[Mu]"], ",", 
+       SubscriptBox[
+        RowBox[{"Gauge", "[", 
+         RowBox[{"[", "j", "]"}], "]"}], "\[Nu]"], ",", 
+       SubscriptBox[
+        RowBox[{"Gauge", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], "\[Rho]"], ",", 
+       SubscriptBox[
+        RowBox[{"Gauge", "[", 
+         RowBox[{"[", "l", "]"}], "]"}], "\[Sigma]"], ",", "\"\< : \>\"", ",", 
+       RowBox[{"GGGG", "[", 
+        RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}]}], "]"}]}], "]"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "j"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"l", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "l"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.51308079359973*^9, 3.513080873090603*^9}, {
+   3.513080915505224*^9, 3.5130809703059053`*^9}, {3.513081004440736*^9, 
+   3.513081007295684*^9}, {3.513081038099407*^9, 3.51308106636204*^9}, {
+   3.513081148795085*^9, 3.513081258867663*^9}, {3.513081359366652*^9, 
+   3.513081359716305*^9}, {3.513525710615342*^9, 3.513525777273123*^9}, {
+   3.513817105148057*^9, 3.513817441204197*^9}, {3.513817478593563*^9, 
+   3.513817497452044*^9}, {3.513817572762615*^9, 3.513817621596404*^9}, {
+   3.5138176724177017`*^9, 3.5138177034921913`*^9}, {3.513818685376685*^9, 
+   3.513818699318449*^9}, {3.5138187376463633`*^9, 3.513818760587756*^9}, {
+   3.513818797641493*^9, 3.513819049867466*^9}, {3.5138192601281567`*^9, 
+   3.513819304441332*^9}, {3.5138193392830553`*^9, 3.5138193395755777`*^9}, 
+   3.513819511307437*^9, {3.513873753390917*^9, 3.51387389414606*^9}, {
+   3.513873948202903*^9, 3.5138739584694767`*^9}, {3.513874024816333*^9, 
+   3.513874219399239*^9}, {3.5138744559871817`*^9, 3.513874457579686*^9}, {
+   3.513874514463337*^9, 3.5138745171416883`*^9}, {3.513874549251151*^9, 
+   3.5138745781332417`*^9}, {3.5138746212518578`*^9, 3.513874703873085*^9}, {
+   3.5138747440955067`*^9, 3.513874829819556*^9}, {3.513874932674822*^9, 
+   3.513875035147798*^9}, {3.513876002978894*^9, 3.513876188130396*^9}, {
+   3.5138762229712133`*^9, 3.513876355255204*^9}, {3.51387642172797*^9, 
+   3.513876468620047*^9}, {3.513876584962757*^9, 3.5138766968265533`*^9}, {
+   3.513876752229188*^9, 3.513876756020912*^9}, {3.5138768754472237`*^9, 
+   3.513877002009553*^9}, {3.513877404764804*^9, 3.513877415043543*^9}, {
+   3.513877678217462*^9, 3.513877742295714*^9}, {3.513877776147779*^9, 
+   3.513877820165248*^9}, {3.513877998216962*^9, 3.5138780054557962`*^9}, {
+   3.513878321368478*^9, 3.513878350248592*^9}, {3.51387838299922*^9, 
+   3.513878468678899*^9}, {3.5138785174286823`*^9, 3.513878569565831*^9}, {
+   3.513878670673153*^9, 3.5138787478637323`*^9}, {3.513878857819975*^9, 
+   3.5138788688907623`*^9}, {3.513878927862351*^9, 3.513879107935482*^9}, {
+   3.5138791476600924`*^9, 3.513879417863415*^9}, {3.513879459073346*^9, 
+   3.513879506216278*^9}, {3.513879619692218*^9, 3.513879808621799*^9}, {
+   3.513879885271905*^9, 3.5138799235912237`*^9}, {3.513880041197124*^9, 
+   3.5138800550834093`*^9}, {3.513880168077376*^9, 3.513880180728889*^9}, {
+   3.5138807580436277`*^9, 3.513880800211021*^9}, {3.513889341934787*^9, 
+   3.513889353740547*^9}, {3.513892562673079*^9, 3.5138925690392227`*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"In these \\!\\(\\*SubsuperscriptBox[\\(W\\), \\(1\\), \\(+\\\\ \
+\[Mu]\\)]\\)\\!\\(\\*SubsuperscriptBox[\\(W\\), \\(2\\), \\(+\\\\ \
+\[Nu]\\)]\\)\\!\\(\\*SubsuperscriptBox[\\(W\\), \\(3\\), \\(-\\\\ \
+\[Rho]\\)]\\)\\!\\(\\*SubsuperscriptBox[\\(W\\), \\(4\\), \\(-\\\\ \
+\[Sigma]\\)]\\) Feynman Rules\\na factor of  (2\\!\\(\\*SubscriptBox[\\(g\\), \
+\\(\[Mu]\[Nu]\\)]\\)\\!\\(\\*SubscriptBox[\\(g\\), \\(\[Rho]\[Sigma]\\)]\\) - \
+\\!\\(\\*SubscriptBox[\\(g\\), \
+\\(\[Mu]\[Rho]\\)]\\)\\!\\(\\*SubscriptBox[\\(g\\), \\(\[Nu]\[Sigma]\\)]\\) - \
+\\!\\(\\*SubscriptBox[\\(g\\), \
+\\(\[Mu]\[Sigma]\\)]\\)\\!\\(\\*SubscriptBox[\\(g\\), \\(\[Nu]\[Rho]\\)]\\)) \
+must also be included\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{3.513892571553885*^9, 3.5138926782765903`*^9, 
+  3.513893127637917*^9, 3.514033574870145*^9, 3.514033662375513*^9, 
+  3.514040856680909*^9, 3.514115433107448*^9, 3.514116965881239*^9, 
+  3.514128074464275*^9, 3.514208357050249*^9, 3.514214070023823*^9, 
+  3.524930053873886*^9, 3.559056573999628*^9, 3.560458564752084*^9, 
+  3.5751316957085667`*^9, 3.575218090692651*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {Complex[0, 1] $CellContext`g^2}, 0, 3, 1],
+     
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Nu]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {Complex[0, 1] $CellContext`g^2}, 0, 3, 1]],
+   
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.575218090695331*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+         SuperscriptBox["g", "2"], " ", "xs", " ", 
+         RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+         SuperscriptBox["v", "2"]}], 
+        RowBox[{
+         SuperscriptBox["f", "2"], "+", 
+         SuperscriptBox["F", "2"]}]]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Nu]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.5752180906967278`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"]}], "+", 
+      FractionBox[
+       RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 1] $CellContext`g^2, 0, 
+       Complex[0, 
+         4] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Cot[2 $CellContext`\[Theta]g]}, 0,
+       3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 1] $CellContext`g^2, 0, 
+      Complex[0, 
+        4] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Cot[2 $CellContext`\[Theta]g]}, 0,
+      3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.575218090699348*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+         SuperscriptBox["g", "2"], " ", "xs", " ", 
+         RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+         SuperscriptBox["v", "2"]}], 
+        RowBox[{
+         SuperscriptBox["f", "2"], "+", 
+         SuperscriptBox["F", "2"]}]]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Nu]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.5752180907019863`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"]}], "+", 
+      FractionBox[
+       RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 1] $CellContext`g^2, 0, 
+       Complex[0, 
+         4] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Cot[2 $CellContext`\[Theta]g]}, 0,
+       3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Nu]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 1] $CellContext`g^2, 0, 
+      Complex[0, 
+        4] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Cot[2 $CellContext`\[Theta]g]}, 0,
+      3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.5752180907045918`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"3", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{"4", " ", "\[Theta]g"}], ")"}]}], "+", "1"}], ")"}], " ", 
+        
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{
+         SuperscriptBox["csc", "2"], "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g], 0, 
+       Complex[
+        0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (1 + 3 Cos[4 $CellContext`\[Theta]g]) 
+       Cos[$CellContext`\[Theta]W] Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1],
+     
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g], 0, 
+      Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs (1 + 3 Cos[4 $CellContext`\[Theta]g]) 
+      Cos[$CellContext`\[Theta]W] Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1]],
+   
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.5752180907074833`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"]}], "+", 
+      FractionBox[
+       RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 1] $CellContext`g^2, 0, 
+       Complex[0, 
+         4] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Cot[2 $CellContext`\[Theta]g]}, 0,
+       3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Nu]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 1] $CellContext`g^2, 0, 
+      Complex[0, 
+        4] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Cot[2 $CellContext`\[Theta]g]}, 0,
+      3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.575218090710617*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"3", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{"4", " ", "\[Theta]g"}], ")"}]}], "+", "1"}], ")"}], " ", 
+        
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{
+         SuperscriptBox["csc", "2"], "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g], 0, 
+       Complex[
+        0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (1 + 3 Cos[4 $CellContext`\[Theta]g]) 
+       Cos[$CellContext`\[Theta]W] Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1],
+     
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Nu]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g], 0, 
+      Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs (1 + 3 Cos[4 $CellContext`\[Theta]g]) 
+      Cos[$CellContext`\[Theta]W] Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1]],
+   
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.575218090713327*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          RowBox[{"cos", "(", 
+           RowBox[{"4", " ", "\[Theta]g"}], ")"}]}], "+", "5"}], ")"}], " ", 
+       RowBox[{
+        SuperscriptBox["csc", "2"], "(", 
+        RowBox[{"2", " ", "\[Theta]g"}], ")"}]}], "-", 
+      FractionBox[
+       RowBox[{"8", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {Complex[0, 
+         Rational[1, 2]] $CellContext`g^2 (5 + 
+        3 Cos[4 $CellContext`\[Theta]g]) Csc[2 $CellContext`\[Theta]g]^2, 0, 
+       Complex[0, -8] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W] 
+       Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {Complex[0, 
+        Rational[1, 2]] $CellContext`g^2 (5 + 3 Cos[4 $CellContext`\[Theta]g])
+        Csc[2 $CellContext`\[Theta]g]^2, 0, 
+      Complex[0, -8] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W] 
+      Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{3.5138925715563917`*^9, 3.5138926782805347`*^9, 
+  3.513893127640025*^9, 3.514033574876607*^9, 3.5140336624137163`*^9, 
+  3.514040856685049*^9, 3.5141154331116123`*^9, 3.514116965889275*^9, 
+  3.514128074466531*^9, 3.514208357084255*^9, 3.514214070027967*^9, 
+  3.524930053875967*^9, 3.5590565740391912`*^9, 3.560458564754364*^9, 
+  3.57513169571128*^9, 3.57521809071596*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{"\"\<In these \!\(\*SubsuperscriptBox[\(V\), \(1\), \(\(\\\ \
+\)\(\[Mu]\)\)]\)\!\(\*SubsuperscriptBox[\(V\), \(2\), \(\(\\\ \
+\)\(\[Nu]\)\)]\)\!\(\*SubsuperscriptBox[\(W\), \(3\), \(-\\\ \
+\[Rho]\)]\)\!\(\*SubsuperscriptBox[\(W\), \(4\), \(-\\\ \[Sigma]\)]\) Feynman \
+Rules\na factor of  (2\!\(\*SubscriptBox[\(g\), \
+\(\[Mu]\[Nu]\)]\)\!\(\*SubscriptBox[\(g\), \(\[Rho]\[Sigma]\)]\) - \
+\!\(\*SubscriptBox[\(g\), \(\[Mu]\[Rho]\)]\)\!\(\*SubscriptBox[\(g\), \(\[Nu]\
+\[Sigma]\)]\) - \!\(\*SubscriptBox[\(g\), \
+\(\[Mu]\[Sigma]\)]\)\!\(\*SubscriptBox[\(g\), \(\[Nu]\[Rho]\)]\)) must also \
+be included\>\"", "\n", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "0"}], "&&", 
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "\[Equal]", "0"}], "&&", 
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "1"}], "&&", 
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "l", "]"}], "]"}], "\[Equal]", 
+         RowBox[{"-", "1"}]}]}], ")"}], "&&", 
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "l", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}]}], ",", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+       SubscriptBox[
+        RowBox[{"Gauge", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "\[Mu]"], ",", 
+       SubscriptBox[
+        RowBox[{"Gauge", "[", 
+         RowBox[{"[", "j", "]"}], "]"}], "\[Nu]"], ",", 
+       SubscriptBox[
+        RowBox[{"Gauge", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], "\[Rho]"], ",", 
+       SubscriptBox[
+        RowBox[{"Gauge", "[", 
+         RowBox[{"[", "l", "]"}], "]"}], "\[Sigma]"], ",", "\"\< : \>\"", ",", 
+       RowBox[{"GGGG", "[", 
+        RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}]}], "]"}]}], "]"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "j"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"l", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "7"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.51308079359973*^9, 3.513080873090603*^9}, {
+   3.513080915505224*^9, 3.5130809703059053`*^9}, {3.513081004440736*^9, 
+   3.513081007295684*^9}, {3.513081038099407*^9, 3.51308106636204*^9}, {
+   3.513081148795085*^9, 3.513081258867663*^9}, {3.513081359366652*^9, 
+   3.513081359716305*^9}, {3.513525710615342*^9, 3.513525777273123*^9}, {
+   3.513817105148057*^9, 3.513817441204197*^9}, {3.513817478593563*^9, 
+   3.513817497452044*^9}, {3.513817572762615*^9, 3.513817621596404*^9}, {
+   3.5138176724177017`*^9, 3.5138177034921913`*^9}, {3.513818685376685*^9, 
+   3.513818699318449*^9}, {3.5138187376463633`*^9, 3.513818760587756*^9}, {
+   3.513818797641493*^9, 3.513819049867466*^9}, {3.5138192601281567`*^9, 
+   3.513819304441332*^9}, {3.5138193392830553`*^9, 3.5138193395755777`*^9}, 
+   3.513819511307437*^9, {3.513873753390917*^9, 3.51387389414606*^9}, {
+   3.513873948202903*^9, 3.5138739584694767`*^9}, {3.513874024816333*^9, 
+   3.513874219399239*^9}, {3.5138744559871817`*^9, 3.513874457579686*^9}, {
+   3.513874514463337*^9, 3.5138745171416883`*^9}, {3.513874549251151*^9, 
+   3.5138745781332417`*^9}, {3.5138746212518578`*^9, 3.513874703873085*^9}, {
+   3.5138747440955067`*^9, 3.513874829819556*^9}, {3.513874932674822*^9, 
+   3.513875035147798*^9}, {3.513876002978894*^9, 3.513876188130396*^9}, {
+   3.5138762229712133`*^9, 3.513876355255204*^9}, {3.51387642172797*^9, 
+   3.513876468620047*^9}, {3.513876584962757*^9, 3.5138766968265533`*^9}, {
+   3.513876752229188*^9, 3.513876756020912*^9}, {3.5138768754472237`*^9, 
+   3.513877002009553*^9}, {3.513877404764804*^9, 3.513877415043543*^9}, {
+   3.513877678217462*^9, 3.513877742295714*^9}, {3.513877776147779*^9, 
+   3.513877820165248*^9}, {3.513877998216962*^9, 3.5138780054557962`*^9}, {
+   3.513878321368478*^9, 3.513878350248592*^9}, {3.51387838299922*^9, 
+   3.513878468678899*^9}, {3.5138785174286823`*^9, 3.513878569565831*^9}, {
+   3.513878670673153*^9, 3.5138787478637323`*^9}, {3.513878857819975*^9, 
+   3.5138788688907623`*^9}, {3.513878927862351*^9, 3.513879107935482*^9}, {
+   3.5138791476600924`*^9, 3.513879417863415*^9}, {3.513879459073346*^9, 
+   3.513879506216278*^9}, {3.513879619692218*^9, 3.513879808621799*^9}, {
+   3.513879885271905*^9, 3.5138799235912237`*^9}, {3.513880041197124*^9, 
+   3.5138800550834093`*^9}, {3.5138800970978107`*^9, 3.513880154112294*^9}, {
+   3.513880215510201*^9, 3.5138802492307262`*^9}, {3.513880299472183*^9, 
+   3.513880309694005*^9}, {3.513880411060473*^9, 3.5138804423646812`*^9}, {
+   3.513880481788341*^9, 3.5138806254524937`*^9}, {3.513880667331932*^9, 
+   3.513880765755026*^9}, {3.51388080349266*^9, 3.513880809460822*^9}, {
+   3.513880848313616*^9, 3.513880848425178*^9}, {3.513887493162017*^9, 
+   3.5138875205142736`*^9}, {3.5138891929594088`*^9, 3.513889238441493*^9}, {
+   3.513892581424102*^9, 3.513892585159061*^9}, {3.524930258399634*^9, 
+   3.524930258775674*^9}}],
+
+Cell[BoxData[
+ FormBox["\<\"In these \\!\\(\\*SubsuperscriptBox[\\(V\\), \\(1\\), \
+\\(\\(\\\\ \\)\\(\[Mu]\\)\\)]\\)\\!\\(\\*SubsuperscriptBox[\\(V\\), \\(2\\), \
+\\(\\(\\\\ \\)\\(\[Nu]\\)\\)]\\)\\!\\(\\*SubsuperscriptBox[\\(W\\), \\(3\\), \
+\\(-\\\\ \[Rho]\\)]\\)\\!\\(\\*SubsuperscriptBox[\\(W\\), \\(4\\), \\(-\\\\ \
+\[Sigma]\\)]\\) Feynman Rules\\na factor of  (2\\!\\(\\*SubscriptBox[\\(g\\), \
+\\(\[Mu]\[Nu]\\)]\\)\\!\\(\\*SubscriptBox[\\(g\\), \\(\[Rho]\[Sigma]\\)]\\) - \
+\\!\\(\\*SubscriptBox[\\(g\\), \
+\\(\[Mu]\[Rho]\\)]\\)\\!\\(\\*SubscriptBox[\\(g\\), \\(\[Nu]\[Sigma]\\)]\\) - \
+\\!\\(\\*SubscriptBox[\\(g\\), \
+\\(\[Mu]\[Sigma]\\)]\\)\\!\\(\\*SubscriptBox[\\(g\\), \\(\[Nu]\[Rho]\\)]\\)) \
+must also be included\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.513880717218671*^9, {3.513880821694951*^9, 3.5138808488852863`*^9}, 
+   3.513883102770646*^9, 3.513883448227878*^9, 3.513887444083894*^9, {
+   3.513887494011918*^9, 3.5138875208976707`*^9}, 3.513889130309106*^9, {
+   3.5138891942872066`*^9, 3.513889238957387*^9}, 3.5138900539313498`*^9, 
+   3.513890911197381*^9, 3.5138923960346317`*^9, 3.5138926783304768`*^9, 
+   3.513893127690765*^9, 3.514033575222611*^9, 3.514033662829145*^9, 
+   3.514040856730012*^9, 3.51411543349293*^9, 3.5141169660127773`*^9, 
+   3.5141280745240507`*^9, 3.514208360189068*^9, 3.514214070082211*^9, 
+   3.5249300539266233`*^9, 3.524930260128203*^9, 3.5590565743906*^9, 
+   3.560458565097403*^9, 3.575131696776574*^9, 3.575218090745296*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["\[Gamma]", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{
+         SuperscriptBox["sin", "2"], "(", "\[Theta]W", ")"}]}]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Sin[$CellContext`\[Theta]W]^2}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Sin[$CellContext`\[Theta]W]^2}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.5752180907471952`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["\[Gamma]", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", "0"}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 0],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.5752180907480717`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["\[Gamma]", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", "0"}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 0],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090749703*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["\[Gamma]", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{
+         SuperscriptBox["sin", "2"], "(", "\[Theta]W", ")"}]}]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Sin[$CellContext`\[Theta]W]^2}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Sin[$CellContext`\[Theta]W]^2}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.57521809077205*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}]}]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W] 
+       Sin[$CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[$CellContext`Z, $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W] 
+      Sin[$CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090788067*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 
+         1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Sin[$CellContext`\[Theta]W]}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[$CellContext`Z, $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 
+        1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Sin[$CellContext`\[Theta]W]}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090804693*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 
+         1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Sin[$CellContext`\[Theta]W]}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[$CellContext`Z, $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 
+        1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Sin[$CellContext`\[Theta]W]}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090821213*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W] 
+       Sin[$CellContext`\[Theta]W], 0, 
+       Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cot[2 $CellContext`\[Theta]g] 
+       Sin[$CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[$CellContext`Z, $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W] 
+      Sin[$CellContext`\[Theta]W], 0, 
+      Complex[0, -2] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cot[2 $CellContext`\[Theta]g] 
+      Sin[$CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090837749*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["Z", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{
+         SuperscriptBox["cos", "2"], "(", "\[Theta]W", ")"}]}]}], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W]^2}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`Z, $CellContext`\[Mu]], 
+    Subscript[$CellContext`Z, $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W]^2}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090854245*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["Z", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 
+         2] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`Z, $CellContext`\[Mu]], 
+    Subscript[$CellContext`Z, $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 
+        2] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090870592*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["Z", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 
+         2] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`Z, $CellContext`\[Mu]], 
+    Subscript[$CellContext`Z, $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 
+        2] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W]}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090888183*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["Z", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox["Z", "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{
+         SuperscriptBox["cos", "2"], "(", "\[Theta]W", ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W]^2, 0, 
+       Complex[0, -4] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W] 
+       Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`Z, $CellContext`\[Mu]], 
+    Subscript[$CellContext`Z, $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W]^2, 0, 
+      Complex[0, -4] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W] 
+      Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090904581*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 
+         1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Sin[$CellContext`\[Theta]W]}, 2, 
+      3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 
+        1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Sin[$CellContext`\[Theta]W]}, 2, 
+     3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090921213*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        RowBox[{"sin", "(", 
+         RowBox[{"2", " ", "\[Theta]W"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Sin[$CellContext`\[Theta]W], 0, 
+       Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cot[2 $CellContext`\[Theta]g] 
+       Sin[2 $CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Sin[$CellContext`\[Theta]W], 0, 
+      Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cot[2 $CellContext`\[Theta]g] 
+      Sin[2 $CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090937549*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        RowBox[{"sin", "(", 
+         RowBox[{"2", " ", "\[Theta]W"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Sin[$CellContext`\[Theta]W], 0, 
+       Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cot[2 $CellContext`\[Theta]g] 
+       Sin[2 $CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Sin[$CellContext`\[Theta]W], 0, 
+      Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cot[2 $CellContext`\[Theta]g] 
+      Sin[2 $CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090954075*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["\[Gamma]", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"], " ", 
+       RowBox[{"cot", "(", 
+        RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+       RowBox[{"sin", "(", "\[Theta]W", ")"}]}], "-", 
+      FractionBox[
+       RowBox[{"3", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"sin", "(", "\[Theta]W", ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g] 
+       Sin[$CellContext`\[Theta]W], 0, 
+       Complex[0, -3] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W] 
+       Sin[$CellContext`\[Theta]W]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`\[Gamma], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g] 
+      Sin[$CellContext`\[Theta]W], 0, 
+      Complex[0, -3] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W] 
+      Sin[$CellContext`\[Theta]W]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.57521809097113*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["Z", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"cos", "(", 
+           RowBox[{"2", " ", "\[Theta]W"}], ")"}], "+", "3"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["f", "2"], "+", 
+          SuperscriptBox["F", "2"]}], ")"}]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 2, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {Complex[0, 
+         Rational[
+         1, 2]] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (3 + Cos[2 $CellContext`\[Theta]W])}, 2, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`Z, $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {Complex[0, 
+        Rational[
+        1, 2]] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (3 + Cos[2 $CellContext`\[Theta]W])}, 2, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218090987308*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["Z", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"cos", "(", 
+           RowBox[{"2", " ", "\[Theta]W"}], ")"}], "+", "3"}], ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W], 0, 
+       Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs (3 + Cos[2 $CellContext`\[Theta]W]) 
+       Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`Z, $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W], 0, 
+      Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs (3 + Cos[2 $CellContext`\[Theta]W]) 
+      Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.5752180910037107`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["Z", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}]}]}], "-", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"cos", "(", 
+           RowBox[{"2", " ", "\[Theta]W"}], ")"}], "+", "3"}], ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W], 0, 
+       Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs (3 + Cos[2 $CellContext`\[Theta]W]) 
+       Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`Z, $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2 Cos[$CellContext`\[Theta]W], 0, 
+      Complex[0, -1] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs (3 + Cos[2 $CellContext`\[Theta]W]) 
+      Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218091020391*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox["Z", "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"], " ", 
+       RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+       RowBox[{"cot", "(", 
+        RowBox[{"2", " ", "\[Theta]g"}], ")"}]}], "+", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"18", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{"4", " ", "\[Theta]g"}], ")"}]}], "+", 
+          RowBox[{"3", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{
+             RowBox[{"4", " ", "\[Theta]g"}], "-", 
+             RowBox[{"2", " ", "\[Theta]W"}]}], ")"}]}], "-", 
+          RowBox[{"6", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{"2", " ", "\[Theta]W"}], ")"}]}], "+", 
+          RowBox[{"3", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{"2", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"2", " ", "\[Theta]g"}], "+", "\[Theta]W"}], ")"}]}], 
+            ")"}]}], "+", "14"}], ")"}], " ", 
+        RowBox[{
+         SuperscriptBox["csc", "2"], "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{"8", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SuperscriptBox["f", "2"], "+", 
+          SuperscriptBox["F", "2"]}], ")"}]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 2] $CellContext`g^2 Cos[$CellContext`\[Theta]W] 
+       Cot[2 $CellContext`\[Theta]g], 0, Complex[0, 
+         Rational[
+         1, 8]] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (14 + 18 Cos[4 $CellContext`\[Theta]g] + 
+        3 Cos[4 $CellContext`\[Theta]g - 2 $CellContext`\[Theta]W] - 6 
+        Cos[2 $CellContext`\[Theta]W] + 
+        3 Cos[2 (2 $CellContext`\[Theta]g + $CellContext`\[Theta]W)]) 
+       Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[$CellContext`Z, $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 2] $CellContext`g^2 Cos[$CellContext`\[Theta]W] 
+      Cot[2 $CellContext`\[Theta]g], 0, Complex[0, 
+        Rational[
+        1, 8]] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (14 + 18 Cos[4 $CellContext`\[Theta]g] + 
+       3 Cos[4 $CellContext`\[Theta]g - 2 $CellContext`\[Theta]W] - 6 
+       Cos[2 $CellContext`\[Theta]W] + 
+       3 Cos[2 (2 $CellContext`\[Theta]g + $CellContext`\[Theta]W)]) 
+      Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218091037134*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"]}]}], "-", 
+      FractionBox[
+       RowBox[{"4", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, -1] $CellContext`g^2, 0, 
+       Complex[0, -4] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W] 
+       Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, -1] $CellContext`g^2, 0, 
+      Complex[0, -4] ($CellContext`f^2 + $CellContext`F^2)^(-1) \
+$CellContext`g^2 $CellContext`xs Cos[$CellContext`\[Theta]W] 
+      Cot[2 $CellContext`\[Theta]g]}, 0, 3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218091054058*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "-"], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"], " ", 
+       RowBox[{"cot", "(", 
+        RowBox[{"2", " ", "\[Theta]g"}], ")"}]}], "+", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"3", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{"4", " ", "\[Theta]g"}], ")"}]}], "+", "1"}], ")"}], " ", 
+        
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{
+         SuperscriptBox["csc", "2"], "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g], 0, 
+       Complex[0, 
+         1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (1 + 3 Cos[4 $CellContext`\[Theta]g]) 
+       Cos[$CellContext`\[Theta]W] Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1],
+     
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     SubMinus[$CellContext`W], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g], 0, 
+      Complex[0, 
+        1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (1 + 3 Cos[4 $CellContext`\[Theta]g]) 
+      Cos[$CellContext`\[Theta]W] Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1]],
+   
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218091070466*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SubscriptBox["W", "+"], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"2", " ", "\[ImaginaryI]", " ", 
+       SuperscriptBox["g", "2"], " ", 
+       RowBox[{"cot", "(", 
+        RowBox[{"2", " ", "\[Theta]g"}], ")"}]}], "+", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"3", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{"4", " ", "\[Theta]g"}], ")"}]}], "+", "1"}], ")"}], " ", 
+        
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{
+         SuperscriptBox["csc", "2"], "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {
+      Complex[0, 2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g], 0, 
+       Complex[0, 
+         1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (1 + 3 Cos[4 $CellContext`\[Theta]g]) 
+       Cos[$CellContext`\[Theta]W] Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1],
+     
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     SubPlus[$CellContext`W], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {
+     Complex[0, 2] $CellContext`g^2 Cot[2 $CellContext`\[Theta]g], 0, 
+      Complex[0, 
+        1] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs (1 + 3 Cos[4 $CellContext`\[Theta]g]) 
+      Cos[$CellContext`\[Theta]W] Csc[2 $CellContext`\[Theta]g]^2}, 0, 3, 1]],
+   
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218091087021*^9}],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Mu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox["Z", "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Nu]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "+"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Rho]"], "\[InvisibleSpace]", 
+    SubscriptBox[
+     RowBox[{"(", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        SubscriptBox["W", "-"], ")"}], "\[Prime]",
+       MultilineFunction->None], ")"}], "\[Sigma]"], 
+    "\[InvisibleSpace]", "\<\" : \"\>", "\[InvisibleSpace]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{
+        FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"3", " ", 
+           RowBox[{"cos", "(", 
+            RowBox[{"4", " ", "\[Theta]g"}], ")"}]}], "+", "5"}], ")"}], " ", 
+        
+        RowBox[{
+         SuperscriptBox["csc", "2"], "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}]}]}], "+", 
+      FractionBox[
+       RowBox[{"8", " ", "\[ImaginaryI]", " ", 
+        SuperscriptBox["g", "2"], " ", "xs", " ", 
+        RowBox[{"cos", "(", "\[Theta]W", ")"}], " ", 
+        RowBox[{"cot", "(", 
+         RowBox[{"2", " ", "\[Theta]g"}], ")"}], " ", 
+        SuperscriptBox["v", "2"]}], 
+       RowBox[{
+        SuperscriptBox["f", "2"], "+", 
+        SuperscriptBox["F", "2"]}]], "+", 
+      InterpretationBox[
+       RowBox[{"O", "(", 
+        SuperscriptBox["v", "3"], ")"}],
+       SeriesData[$CellContext`v, 0, {}, 0, 3, 1],
+       Editable->False]}],
+     SeriesData[$CellContext`v, 0, {Complex[0, 
+         Rational[-1, 2]] $CellContext`g^2 (5 + 
+        3 Cos[4 $CellContext`\[Theta]g]) Csc[2 $CellContext`\[Theta]g]^2, 0, 
+       Complex[0, 
+         8] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Cot[2 $CellContext`\[Theta]g]}, 0,
+       3, 1],
+     Editable->False]}],
+   SequenceForm[
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Mu]], 
+    Subscript[
+     Derivative[1][$CellContext`Z], $CellContext`\[Nu]], 
+    Subscript[
+     Derivative[1][
+      SubPlus[$CellContext`W]], $CellContext`\[Rho]], 
+    Subscript[
+     Derivative[1][
+      SubMinus[$CellContext`W]], $CellContext`\[Sigma]], " : ", 
+    SeriesData[$CellContext`v, 0, {Complex[0, 
+        Rational[-1, 2]] $CellContext`g^2 (5 + 
+       3 Cos[4 $CellContext`\[Theta]g]) Csc[2 $CellContext`\[Theta]g]^2, 0, 
+      Complex[0, 
+        8] ($CellContext`f^2 + $CellContext`F^2)^(-1) $CellContext`g^2 \
+$CellContext`xs Cos[$CellContext`\[Theta]W] Cot[2 $CellContext`\[Theta]g]}, 0,
+      3, 1]],
+   Editable->False], TraditionalForm]], "Print",
+ CellChangeTimes->{{3.513889209467732*^9, 3.513889238959614*^9}, 
+   3.513890053934128*^9, 3.513890911200248*^9, 3.5138923960782537`*^9, 
+   3.513892678332285*^9, 3.5138931276925898`*^9, 3.514033575252719*^9, 
+   3.514033662858716*^9, 3.514040856731962*^9, 3.514115433526354*^9, 
+   3.514116966043131*^9, 3.514128074525816*^9, 3.514208360219244*^9, 
+   3.5142140700840073`*^9, 3.524930053930203*^9, 3.524930260130219*^9, 
+   3.5590565744126987`*^9, 3.5604585651236553`*^9, 3.5751316968043413`*^9, 
+   3.575218091104506*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1368, 852},
+WindowMargins->{{136, Automatic}, {Automatic, 0}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1063, 27, 57, "Input"],
+Cell[CellGroupData[{
+Cell[1633, 51, 17740, 411, 379, "Input"],
+Cell[19376, 464, 2046, 31, 68, "Output"],
+Cell[CellGroupData[{
+Cell[21447, 499, 2517, 55, 27, "Print"],
+Cell[23967, 556, 2503, 55, 27, "Print"],
+Cell[26473, 613, 2898, 67, 47, "Print"],
+Cell[29374, 682, 2262, 50, 27, "Print"],
+Cell[31639, 734, 2793, 66, 47, "Print"],
+Cell[34435, 802, 3326, 77, 47, "Print"],
+Cell[37764, 881, 2262, 50, 27, "Print"],
+Cell[40029, 933, 2793, 66, 47, "Print"],
+Cell[42825, 1001, 3324, 77, 47, "Print"],
+Cell[46152, 1080, 2757, 63, 27, "Print"],
+Cell[48912, 1145, 3314, 75, 47, "Print"],
+Cell[52229, 1222, 3411, 78, 47, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[55667, 1304, 10233, 255, 249, "Input"],
+Cell[CellGroupData[{
+Cell[65925, 1563, 4876, 94, 92, "Input"],
+Cell[70804, 1659, 1130, 17, 52, "Output"],
+Cell[CellGroupData[{
+Cell[71959, 1680, 1746, 46, 27, "Print"],
+Cell[73708, 1728, 2310, 59, 47, "Print"],
+Cell[76021, 1789, 2734, 72, 47, "Print"],
+Cell[78758, 1863, 2310, 59, 47, "Print"],
+Cell[81071, 1924, 2736, 72, 47, "Print"],
+Cell[83810, 1998, 3329, 87, 47, "Print"],
+Cell[87142, 2087, 2734, 72, 47, "Print"],
+Cell[89879, 2161, 3327, 87, 47, "Print"],
+Cell[93209, 2250, 3468, 89, 47, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[96726, 2345, 5495, 105, 112, "Input"],
+Cell[102224, 2452, 1501, 22, 52, "Output"],
+Cell[CellGroupData[{
+Cell[103750, 2478, 1943, 45, 27, "Print"],
+Cell[105696, 2525, 1419, 32, 26, "Print"],
+Cell[107118, 2559, 1417, 32, 26, "Print"],
+Cell[108538, 2593, 2178, 53, 27, "Print"],
+Cell[110719, 2648, 2017, 47, 27, "Print"],
+Cell[112739, 2697, 2292, 56, 47, "Print"],
+Cell[115034, 2755, 2292, 56, 47, "Print"],
+Cell[117329, 2813, 2987, 71, 47, "Print"],
+Cell[120319, 2886, 1913, 45, 27, "Print"],
+Cell[122235, 2933, 2288, 56, 47, "Print"],
+Cell[124526, 2991, 2288, 56, 47, "Print"],
+Cell[126817, 3049, 2883, 69, 47, "Print"],
+Cell[129703, 3120, 2410, 59, 47, "Print"],
+Cell[132116, 3181, 2881, 69, 47, "Print"],
+Cell[135000, 3252, 2881, 69, 47, "Print"],
+Cell[137884, 3323, 3081, 74, 47, "Print"],
+Cell[140968, 3399, 2477, 61, 48, "Print"],
+Cell[143448, 3462, 2944, 71, 47, "Print"],
+Cell[146395, 3535, 2942, 71, 47, "Print"],
+Cell[149340, 3608, 4321, 105, 48, "Print"],
+Cell[153664, 3715, 2728, 67, 47, "Print"],
+Cell[156395, 3784, 3290, 83, 47, "Print"],
+Cell[159688, 3869, 3290, 83, 47, "Print"],
+Cell[162981, 3954, 3511, 89, 47, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

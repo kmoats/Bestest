@@ -1,0 +1,2314 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     88166,       2305]
+NotebookOptionsPosition[     87098,       2270]
+NotebookOutlinePosition[     87438,       2285]
+CellTagsIndexPosition[     87395,       2282]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+  "This", " ", "program", " ", "writes", " ", "out", " ", "the", " ", 
+   "particle", " ", 
+   RowBox[{"interactions", ".", "  ", "Copy"}], " ", "and", " ", "paste", " ",
+    "this", " ", "output", " ", "into", " ", "the", " ", 
+   RowBox[{"interactions", ".", "dat"}], " ", "Madgraph", " ", "model", " ", 
+   "file"}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.5153366988069277`*^9, 3.515336771270897*^9}, {
+   3.515336946699334*^9, 3.515336947641787*^9}, 3.515337211581298*^9, {
+   3.515337441938794*^9, 3.5153374455860643`*^9}, {3.515337740599208*^9, 
+   3.5153377576139812`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Load", " ", "Feynman", " ", "Rules"}], " ", "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/GGS\>\""}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/GGSS\>\""}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/GSS\>\""}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/FFG\>\""}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/FFS\>\""}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/FFSS\>\""}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/LLG\>\""}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/LLS\>\""}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/LLSS\>\""}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/GGG\>\""}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/GGGG\>\""}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/SSS\>\""}], "\[IndentingNewLine]", 
+   RowBox[{"<<", "\"\<Desktop/Feynman_Rules/SSSS\>\""}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.513793518129545*^9, 3.5137935285442743`*^9}, {
+  3.513793795374387*^9, 3.513793828358211*^9}, {3.5137941841893177`*^9, 
+  3.513794208469796*^9}, {3.513893259924789*^9, 3.51389326349114*^9}, {
+  3.513903581702314*^9, 3.513903586673155*^9}, {3.5177639132216063`*^9, 
+  3.517763946707707*^9}, {3.517765574976879*^9, 3.517765593379966*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Define", " ", "particles", " ", "and", " ", "their", " ", "charges"}], 
+   " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Mathematica", " ", "Notation"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Q8", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       OverscriptBox["t", "~"], ",", 
+       OverscriptBox["b", "~"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "au"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "ad"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "b5"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "b2"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "5"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "6"]}], "}"}]}], ";", "\[IndentingNewLine]", 
+    
+    RowBox[{"Q8bar", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       OverscriptBox[
+        OverscriptBox["t", "~"], "_"], ",", 
+       OverscriptBox[
+        OverscriptBox["b", "~"], "_"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "au"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "ad"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "b5"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "b2"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "5"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "6"]}], "}"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ChargeQ8", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "3"}], ",", 
+       RowBox[{"5", "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ChargeQ8bar", "=", 
+     RowBox[{"-", "ChargeQ8"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Q8", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       OverscriptBox["u", "~"], ",", 
+       OverscriptBox["d", "~"], ",", 
+       OverscriptBox["c", "~"], ",", 
+       OverscriptBox["s", "~"], ",", 
+       OverscriptBox["t", "~"], ",", 
+       OverscriptBox["b", "~"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "au"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "ad"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "b5"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "b2"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "5"], ",", 
+       SubscriptBox[
+        OverscriptBox["T", "~"], "6"]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Q8bar", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       OverscriptBox[
+        OverscriptBox["u", "~"], "_"], ",", 
+       OverscriptBox[
+        OverscriptBox["d", "~"], "_"], ",", 
+       OverscriptBox[
+        OverscriptBox["c", "~"], "_"], ",", 
+       OverscriptBox[
+        OverscriptBox["s", "~"], "_"], ",", 
+       OverscriptBox[
+        OverscriptBox["t", "~"], "_"], ",", 
+       OverscriptBox[
+        OverscriptBox["b", "~"], "_"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "au"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "ad"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "b5"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "b2"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "5"], ",", 
+       SubscriptBox[
+        OverscriptBox[
+         OverscriptBox["T", "~"], "_"], "6"]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ChargeQ8", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{
+        RowBox[{"-", "1"}], "/", "3"}], ",", 
+       RowBox[{"5", "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}], ",", 
+       RowBox[{"2", "/", "3"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ChargeQ8bar", "=", 
+     RowBox[{"-", "ChargeQ8"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Lept", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["e", "-"], ",", 
+       SubscriptBox["\[Mu]", "-"], ",", 
+       SubscriptBox["\[Tau]", "-"], ",", 
+       SubscriptBox["\[Nu]", "e"], ",", 
+       SubscriptBox["\[Nu]", "\[Mu]"], ",", 
+       SubscriptBox["\[Nu]", "\[Tau]"]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Leptbar", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["e", "+"], ",", 
+       SubscriptBox["\[Mu]", "+"], ",", 
+       SubscriptBox["\[Tau]", "+"], ",", 
+       SubscriptBox[
+        OverscriptBox["\[Nu]", "_"], "e"], ",", 
+       SubscriptBox[
+        OverscriptBox["\[Nu]", "_"], "\[Mu]"], ",", 
+       SubscriptBox[
+        OverscriptBox["\[Nu]", "_"], "\[Tau]"]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ChargeLept", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", 
+       RowBox[{"-", "1"}], ",", 
+       RowBox[{"-", "1"}], ",", "0", ",", "0", ",", "0"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ChargeLeptbar", "=", 
+     RowBox[{"-", "ChargeLept"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Gauge", "=", 
+     RowBox[{"{", 
+      RowBox[{"\[Gamma]", ",", "Z", ",", 
+       SubscriptBox["W", "+"], ",", 
+       SubscriptBox["W", "-"], ",", 
+       SuperscriptBox["Z", "\[Prime]"], ",", 
+       SuperscriptBox[
+        SubscriptBox["W", "+"], "\[Prime]"], ",", 
+       SuperscriptBox[
+        SubscriptBox["W", "-"], "\[Prime]"]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ChargeGauge", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "1", ",", 
+       RowBox[{"-", "1"}], ",", "0", ",", "1", ",", 
+       RowBox[{"-", "1"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Scalar", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["h", "0"], ",", 
+       SubscriptBox["H", "0"], ",", 
+       SubscriptBox["A", "0"], ",", 
+       SubscriptBox["G", "0"], ",", 
+       SubscriptBox["H", "+"], ",", 
+       SubscriptBox["H", "-"], ",", 
+       SubscriptBox["G", "+"], ",", 
+       SubscriptBox["G", "-"], ",", 
+       SubscriptBox["\[Phi]", "0"], ",", 
+       SubscriptBox["\[Phi]", "+"], ",", 
+       SubscriptBox["\[Phi]", "-"], ",", 
+       SubscriptBox["\[Eta]", "0"], ",", 
+       SubscriptBox["\[Eta]", "+"], ",", 
+       SubscriptBox["\[Eta]", "-"], ",", "\[Sigma]"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ChargeScalar", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0", ",", "0", ",", "1", ",", 
+       RowBox[{"-", "1"}], ",", "1", ",", 
+       RowBox[{"-", "1"}], ",", "0", ",", "1", ",", 
+       RowBox[{"-", "1"}], ",", "0", ",", "1", ",", 
+       RowBox[{"-", "1"}], ",", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Madgraph", " ", "Notation"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"QMadgraph", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "u", ",", "d", ",", "c", ",", "s", ",", "t", ",", "b", ",", "Tau", ",", 
+       "Tad", ",", "Tb5", ",", "Tb2", ",", "T5", ",", "T6"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"GaugeMadgraph", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "a", ",", "z", ",", "\"\<w+\>\"", ",", "\"\<w-\>\"", ",", "Zp", ",", 
+       "\"\<Wp+\>\"", ",", "\"\<Wp-\>\""}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ScalarMadgraph", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "h", ",", "H0", ",", "A0", ",", "G0", ",", "\"\<H+\>\"", ",", 
+       "\"\<H-\>\"", ",", "\"\<G+\>\"", ",", "\"\<G-\>\"", ",", "phi0", ",", 
+       "\"\<phi+\>\"", ",", "\"\<phi-\>\"", ",", "eta0", ",", "\"\<eta+\>\"", 
+       ",", "\"\<eta-\>\"", ",", "sig"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"LeptonMadgraph", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<e-\>\"", ",", " ", "\"\<mu-\>\"", ",", " ", "\"\<ta-\>\"", ",", 
+       " ", "ve", ",", "vm", ",", "vt"}], " ", "}"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Fortran", " ", "Notation"}], " ", "*)"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"QFortran", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "u", ",", "d", ",", "c", ",", "s", ",", "t", ",", "b", ",", "Tau", ",", 
+       "Tad", ",", "Tb5", ",", "Tb2", ",", "T5", ",", "T6"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"GaugeFortran", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "A", ",", "Z", ",", "Wp", ",", "Wm", ",", "Zp", ",", "Wpp", ",", 
+       "Wpm"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ScalarFortran", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "H", ",", "H0", ",", "A0", ",", "G0", ",", "Hp", ",", "Hm", ",", "Gp", 
+       ",", "Gm", ",", "phi0", ",", "phip", ",", "phim", ",", "eta0", ",", 
+       "etap", ",", "etam", ",", "sig"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"LeptonFortran", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "e", ",", " ", "mu", ",", " ", "ta", ",", " ", "ve", ",", "vm", ",", 
+       "vt"}], " ", "}"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5075572416854277`*^9, 3.507557285974866*^9}, 
+   3.507566193041226*^9, {3.507592925734082*^9, 3.507592941302099*^9}, {
+   3.507596574184431*^9, 3.507596580531659*^9}, {3.507596645828877*^9, 
+   3.50759665654482*^9}, {3.512920563946704*^9, 3.512920575939456*^9}, {
+   3.5137762368903008`*^9, 3.513776299972856*^9}, 3.513776338047777*^9, {
+   3.5137796237919407`*^9, 3.513779651667519*^9}, {3.513793695758449*^9, 
+   3.513793716164015*^9}, {3.513793750479691*^9, 3.513793758346775*^9}, {
+   3.513794215507662*^9, 3.513794253621682*^9}, 3.513794879953867*^9, {
+   3.514937095752863*^9, 3.5149371109803047`*^9}, {3.515337602570573*^9, 
+   3.515337639718883*^9}, {3.515337699840412*^9, 3.5153377189534597`*^9}, {
+   3.517763967035413*^9, 3.517763984286119*^9}, {3.5177640383411703`*^9, 
+   3.517764106728368*^9}, {3.517764346285986*^9, 3.517764351381233*^9}, {
+   3.517765155612895*^9, 3.517765178005334*^9}, {3.520883020485474*^9, 
+   3.52088302603654*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"file", "=", 
+   RowBox[{"$TemporaryPrefix", "<>", "\"\<interactions.mf\>\""}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.515337037659726*^9, 3.515337040027742*^9}, {
+  3.5153370912050457`*^9, 3.515337096708325*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<# FFV Interactions \\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "+", 
+         RowBox[{"ChargeQ8bar", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeQ8", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+      RowBox[{"!", 
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Normal", "[", 
+          RowBox[{"FFG", "[", 
+           RowBox[{"k", ",", "i", ",", "j"}], "]"}], "]"}], "\[Equal]", "0"}],
+         "]"}]}]}], ",", 
+     RowBox[{"WriteString", "[", 
+      RowBox[{"file", ",", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<`1`   `2`   `3`   G`4``5``6`   QED \\n\>\"", ",", 
+         RowBox[{"QMadgraph", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"QMadgraph", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"GaugeMadgraph", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"GaugeFortran", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"QFortran", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"QFortran", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "12"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "12"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.515336249333848*^9, 3.515336250220397*^9}, {
+  3.5153362802854958`*^9, 3.5153364305148163`*^9}, {3.515336532036665*^9, 
+  3.5153365329402237`*^9}, {3.5153368053029118`*^9, 3.51533684855728*^9}, {
+  3.5153368794699593`*^9, 3.515336886917235*^9}, {3.5153409120491533`*^9, 
+  3.51534091552324*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<# FFS Interactions \\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeScalar", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "+", 
+         RowBox[{"ChargeQ8bar", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeQ8", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "8"}], "&&", 
+      RowBox[{"!", 
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Normal", "[", 
+          RowBox[{"FFS", "[", 
+           RowBox[{"k", ",", "i", ",", "j"}], "]"}], "]"}], "\[Equal]", "0"}],
+         "]"}]}]}], ",", 
+     RowBox[{"WriteString", "[", 
+      RowBox[{"file", ",", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<`1`   `2`   `3`   G`4``5``6`   QED \\n\>\"", ",", 
+         RowBox[{"QMadgraph", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"QMadgraph", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"ScalarMadgraph", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"ScalarFortran", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"QFortran", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"QFortran", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "15"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "12"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "12"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.515336915813099*^9, 3.515336939107772*^9}, {
+  3.515336986994125*^9, 3.515336998227635*^9}, {3.51533913836007*^9, 
+  3.515339139287284*^9}, {3.5153391793174*^9, 3.51533924565331*^9}, {
+  3.51533974444632*^9, 3.515339757484468*^9}, {3.515339791384083*^9, 
+  3.515339836382763*^9}, {3.515339873632093*^9, 3.5153398753196898`*^9}, {
+  3.515340905514723*^9, 3.5153409089240503`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<# VVS Interactions \\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeScalar", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "8"}], "&&", 
+      RowBox[{"!", 
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Normal", "[", 
+          RowBox[{"GGS", "[", 
+           RowBox[{"i", ",", "j", ",", "k"}], "]"}], "]"}], "\[Equal]", "0"}],
+         "]"}]}]}], ",", 
+     RowBox[{"WriteString", "[", 
+      RowBox[{"file", ",", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<`1`   `2`   `3`   G`4``5``6`   QED \\n\>\"", ",", 
+         RowBox[{"GaugeMadgraph", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"GaugeMadgraph", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"ScalarMadgraph", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"ScalarFortran", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"GaugeFortran", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"GaugeFortran", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "15"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "j"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.5153395154539137`*^9, 3.515339516590663*^9}, {
+  3.5153400235264883`*^9, 3.515340025532798*^9}, {3.5153401087385397`*^9, 
+  3.51534011341852*^9}, {3.515340899058313*^9, 3.51534090263626*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<# VSS Interactions \\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeScalar", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "+", 
+         RowBox[{"ChargeScalar", "[", 
+          RowBox[{"[", "k", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+      RowBox[{"j", "\[NotEqual]", "4"}], "&&", 
+      RowBox[{"j", "\[NotEqual]", "7"}], "&&", 
+      RowBox[{"j", "\[NotEqual]", "8"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "8"}], "&&", 
+      RowBox[{"!", 
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Normal", "[", 
+          RowBox[{"GSS", "[", 
+           RowBox[{"i", ",", "j", ",", "k"}], "]"}], "]"}], "\[Equal]", "0"}],
+         "]"}]}]}], ",", 
+     RowBox[{"WriteString", "[", 
+      RowBox[{"file", ",", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<`1`   `2`   `3`   G`4``5``6`   QED \\n\>\"", ",", 
+         RowBox[{"GaugeMadgraph", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"ScalarMadgraph", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"ScalarMadgraph", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"GaugeFortran", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"ScalarFortran", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"ScalarFortran", "[", 
+          RowBox[{"[", "k", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "15"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "k"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"WriteString", "[", 
+     RowBox[{"file", ",", "\"\<# VVSS Interactions \\n\>\""}], "]"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"TrueQ", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ChargeGauge", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "+", 
+            RowBox[{"ChargeGauge", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "+", 
+            RowBox[{"ChargeScalar", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "+", 
+            RowBox[{"ChargeScalar", "[", 
+             RowBox[{"[", "l", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+         RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+         RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+         RowBox[{"k", "\[NotEqual]", "8"}], "&&", 
+         RowBox[{"l", "\[NotEqual]", "4"}], "&&", 
+         RowBox[{"l", "\[NotEqual]", "7"}], "&&", 
+         RowBox[{"l", "\[NotEqual]", "8"}], "&&", 
+         RowBox[{"!", 
+          RowBox[{"TrueQ", "[", 
+           RowBox[{
+            RowBox[{"Normal", "[", 
+             RowBox[{"GGSS", "[", 
+              RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "]"}], 
+            "\[Equal]", "0"}], "]"}]}]}], ",", 
+        RowBox[{"WriteString", "[", 
+         RowBox[{"file", ",", 
+          RowBox[{"StringForm", "[", 
+           RowBox[{
+           "\"\<`1`   `2`   `3`   `4`   G`5``6``7``8`   G`5``6``7``8`    QED  \
+  QED \\n\>\"", ",", 
+            RowBox[{"GaugeMadgraph", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"GaugeMadgraph", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"ScalarMadgraph", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"ScalarMadgraph", "[", 
+             RowBox[{"[", "l", "]"}], "]"}], ",", 
+            RowBox[{"GaugeFortran", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"GaugeFortran", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"ScalarFortran", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"ScalarFortran", "[", 
+             RowBox[{"[", "l", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "j"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"l", ",", "15"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "l"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+    RowBox[{"WriteString", "[", 
+     RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"WriteString", "[", 
+    RowBox[{"file", ",", "\"\<# VVSS Interactions \\n\>\""}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"TrueQ", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "+", 
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], "+", 
+           RowBox[{"ChargeScalar", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], "+", 
+           RowBox[{"ChargeScalar", "[", 
+            RowBox[{"[", "l", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+        
+        RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+        RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+        RowBox[{"k", "\[NotEqual]", "8"}], "&&", 
+        RowBox[{"l", "\[NotEqual]", "4"}], "&&", 
+        RowBox[{"l", "\[NotEqual]", "7"}], "&&", 
+        RowBox[{"l", "\[NotEqual]", "8"}], "&&", 
+        RowBox[{"!", 
+         RowBox[{"TrueQ", "[", 
+          RowBox[{
+           RowBox[{"Normal", "[", 
+            RowBox[{"GGSS", "[", 
+             RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "]"}], 
+           "\[Equal]", "0"}], "]"}]}]}], ",", 
+       RowBox[{"WriteString", "[", 
+        RowBox[{"file", ",", 
+         RowBox[{"StringForm", "[", 
+          RowBox[{
+          "\"\<`1`   `2`   `3`   `4`   G`5``6``7``8`   DUM    QED    QED \
+\\n\>\"", ",", 
+           RowBox[{"GaugeMadgraph", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"GaugeMadgraph", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], ",", 
+           RowBox[{"ScalarMadgraph", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], ",", 
+           RowBox[{"ScalarMadgraph", "[", 
+            RowBox[{"[", "l", "]"}], "]"}], ",", 
+           RowBox[{"GaugeFortran", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"GaugeFortran", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], ",", 
+           RowBox[{"ScalarFortran", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], ",", 
+           RowBox[{"ScalarFortran", "[", 
+            RowBox[{"[", "l", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"l", ",", "15"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "l"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"WriteString", "[", 
+    RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.5153395201467743`*^9, 3.515339520425469*^9}, {
+  3.515340373033922*^9, 3.515340440694736*^9}, {3.5153404729270363`*^9, 
+  3.515340506229884*^9}, {3.515340853924522*^9, 3.515340860118194*^9}, {
+  3.5153414582468967`*^9, 3.5153414614622726`*^9}, {3.5153417196413383`*^9, 
+  3.515341874370214*^9}, {3.5153419074091053`*^9, 3.5153419310425262`*^9}, {
+  3.5167059150642767`*^9, 3.516705947051214*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<# VVV Interactions \\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "+", 
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "k", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "1"}], "&&", 
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "\[Equal]", 
+         RowBox[{"-", "1"}]}], "&&", 
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "0"}]}], ")"}], "&&", 
+      RowBox[{"!", 
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Normal", "[", 
+          RowBox[{"GGG", "[", 
+           RowBox[{"i", ",", "j", ",", "k"}], "]"}], "]"}], "\[Equal]", "0"}],
+         "]"}]}]}], ",", 
+     RowBox[{"WriteString", "[", 
+      RowBox[{"file", ",", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<`1`   `2`   `3`   G`4``5``6`   QED \\n\>\"", ",", 
+         RowBox[{"GaugeMadgraph", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"GaugeMadgraph", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"GaugeMadgraph", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"GaugeFortran", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"GaugeFortran", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"GaugeFortran", "[", 
+          RowBox[{"[", "k", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "j"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "7"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.5153421422238703`*^9, 3.51534223935849*^9}, {
+  3.515342387674108*^9, 3.515342390864588*^9}, {3.5153424366633244`*^9, 
+  3.515342437559147*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"WriteString", "[", 
+     RowBox[{"file", ",", "\"\<# VVVV Interactions \\n\>\""}], "]"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"TrueQ", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ChargeGauge", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "+", 
+            RowBox[{"ChargeGauge", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "+", 
+            RowBox[{"ChargeGauge", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "+", 
+            RowBox[{"ChargeGauge", "[", 
+             RowBox[{"[", "l", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"i", "\[Equal]", "3"}], "||", 
+               RowBox[{"i", "\[Equal]", "6"}]}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"j", "\[Equal]", "3"}], "||", 
+               RowBox[{"j", "\[Equal]", "6"}]}], ")"}]}], ")"}], "||", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"ChargeGauge", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "0"}], "&&", 
+             RowBox[{
+              RowBox[{"ChargeGauge", "[", 
+               RowBox[{"[", "j", "]"}], "]"}], "\[Equal]", "0"}], "&&", 
+             RowBox[{
+              RowBox[{"ChargeGauge", "[", 
+               RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "1"}], "&&", 
+             RowBox[{
+              RowBox[{"ChargeGauge", "[", 
+               RowBox[{"[", "l", "]"}], "]"}], "\[Equal]", 
+              RowBox[{"-", "1"}]}]}], ")"}]}], ")"}], "&&", 
+         RowBox[{"!", 
+          RowBox[{"TrueQ", "[", 
+           RowBox[{
+            RowBox[{"Normal", "[", 
+             RowBox[{"GGGG", "[", 
+              RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "]"}], 
+            "\[Equal]", "0"}], "]"}]}]}], ",", 
+        RowBox[{"WriteString", "[", 
+         RowBox[{"file", ",", 
+          RowBox[{"StringForm", "[", 
+           RowBox[{
+           "\"\<`1`   `2`   `3`   `4`   G`5``6``7``8`    G`5``6``7``8`   QED  \
+ QED \\n\>\"", ",", 
+            RowBox[{"GaugeMadgraph", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"GaugeMadgraph", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"GaugeMadgraph", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"GaugeMadgraph", "[", 
+             RowBox[{"[", "l", "]"}], "]"}], ",", 
+            RowBox[{"GaugeFortran", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"GaugeFortran", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"GaugeFortran", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"GaugeFortran", "[", 
+             RowBox[{"[", "l", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "j"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"l", ",", "7"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "l"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+    RowBox[{"WriteString", "[", 
+     RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"WriteString", "[", 
+    RowBox[{"file", ",", "\"\<# VVVV Interactions \\n\>\""}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"TrueQ", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "+", 
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], "+", 
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], "+", 
+           RowBox[{"ChargeGauge", "[", 
+            RowBox[{"[", "l", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+        
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"i", "\[Equal]", "3"}], "||", 
+              RowBox[{"i", "\[Equal]", "6"}]}], ")"}], "&&", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"j", "\[Equal]", "3"}], "||", 
+              RowBox[{"j", "\[Equal]", "6"}]}], ")"}]}], ")"}], "||", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"ChargeGauge", "[", 
+              RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "0"}], "&&", 
+            RowBox[{
+             RowBox[{"ChargeGauge", "[", 
+              RowBox[{"[", "j", "]"}], "]"}], "\[Equal]", "0"}], "&&", 
+            RowBox[{
+             RowBox[{"ChargeGauge", "[", 
+              RowBox[{"[", "k", "]"}], "]"}], "\[Equal]", "1"}], "&&", 
+            RowBox[{
+             RowBox[{"ChargeGauge", "[", 
+              RowBox[{"[", "l", "]"}], "]"}], "\[Equal]", 
+             RowBox[{"-", "1"}]}]}], ")"}]}], ")"}], "&&", 
+        RowBox[{"!", 
+         RowBox[{"TrueQ", "[", 
+          RowBox[{
+           RowBox[{"Normal", "[", 
+            RowBox[{"GGGG", "[", 
+             RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "]"}], 
+           "\[Equal]", "0"}], "]"}]}]}], ",", 
+       RowBox[{"WriteString", "[", 
+        RowBox[{"file", ",", 
+         RowBox[{"StringForm", "[", 
+          RowBox[{
+          "\"\<`1`   `2`   `3`   `4`   G`5``6``7``8`   DUM   QED   QED \
+\\n\>\"", ",", 
+           RowBox[{"GaugeMadgraph", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"GaugeMadgraph", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], ",", 
+           RowBox[{"GaugeMadgraph", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], ",", 
+           RowBox[{"GaugeMadgraph", "[", 
+            RowBox[{"[", "l", "]"}], "]"}], ",", 
+           RowBox[{"GaugeFortran", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"GaugeFortran", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], ",", 
+           RowBox[{"GaugeFortran", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], ",", 
+           RowBox[{"GaugeFortran", "[", 
+            RowBox[{"[", "l", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"l", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "l"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"WriteString", "[", 
+    RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.515342441428061*^9, 3.515342448147442*^9}, {
+   3.515342520438344*^9, 3.515342540547477*^9}, {3.515342620248839*^9, 
+   3.515342674620377*^9}, 3.515342724268839*^9, {3.515342843903528*^9, 
+   3.515342852955906*^9}, {3.516629483849378*^9, 3.516629500103023*^9}, {
+   3.516705886293907*^9, 3.516705900145768*^9}, {3.5167065442181263`*^9, 
+   3.516706544952938*^9}, {3.516706677563892*^9, 3.516706680170639*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<# SSS Interactions \\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeScalar", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeScalar", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], "+", 
+         RowBox[{"ChargeScalar", "[", 
+          RowBox[{"[", "k", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"i", "\[NotEqual]", "4"}], "&&", 
+        RowBox[{"i", "\[NotEqual]", "7"}], "&&", 
+        RowBox[{"i", "\[NotEqual]", "8"}], "&&", 
+        RowBox[{"j", "\[NotEqual]", "4"}], "&&", 
+        RowBox[{"j", "\[NotEqual]", "7"}], "&&", 
+        RowBox[{"j", "\[NotEqual]", "8"}], "&&", 
+        RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+        RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+        RowBox[{"k", "\[NotEqual]", "8"}]}], ")"}], "&&", 
+      RowBox[{"!", 
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Normal", "[", 
+          RowBox[{"SSS", "[", 
+           RowBox[{"i", ",", "j", ",", "k"}], "]"}], "]"}], "\[Equal]", "0"}],
+         "]"}]}]}], ",", 
+     RowBox[{"WriteString", "[", 
+      RowBox[{"file", ",", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<`1`   `2`   `3`   G`4``5``6`   QED \\n\>\"", ",", 
+         RowBox[{"ScalarMadgraph", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"ScalarMadgraph", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"ScalarMadgraph", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"ScalarFortran", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"ScalarFortran", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"ScalarFortran", "[", 
+          RowBox[{"[", "k", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "15"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "i"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "j"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.5153421422238703`*^9, 3.51534223935849*^9}, {
+  3.515342387674108*^9, 3.515342390864588*^9}, {3.5153424366633244`*^9, 
+  3.515342437559147*^9}, {3.516629596042547*^9, 3.516629672668807*^9}, {
+  3.5166297050123034`*^9, 3.5166297094454947`*^9}, {3.516629773617688*^9, 
+  3.516629825138321*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"WriteString", "[", 
+     RowBox[{"file", ",", "\"\<# SSSS Interactions \\n\>\""}], "]"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"TrueQ", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ChargeScalar", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], "+", 
+            RowBox[{"ChargeScalar", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], "+", 
+            RowBox[{"ChargeScalar", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "+", 
+            RowBox[{"ChargeScalar", "[", 
+             RowBox[{"[", "l", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"i", "\[NotEqual]", "4"}], "&&", 
+           RowBox[{"i", "\[NotEqual]", "7"}], "&&", 
+           RowBox[{"i", "\[NotEqual]", "8"}], "&&", 
+           RowBox[{"j", "\[NotEqual]", "4"}], "&&", 
+           RowBox[{"j", "\[NotEqual]", "7"}], "&&", 
+           RowBox[{"j", "\[NotEqual]", "8"}], "&&", 
+           RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+           RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+           RowBox[{"k", "\[NotEqual]", "8"}], "&&", 
+           RowBox[{"l", "\[NotEqual]", "4"}], "&&", 
+           RowBox[{"l", "\[NotEqual]", "7"}], "&&", 
+           RowBox[{"l", "\[NotEqual]", "8"}]}], ")"}], "&&", 
+         RowBox[{"!", 
+          RowBox[{"TrueQ", "[", 
+           RowBox[{
+            RowBox[{"Normal", "[", 
+             RowBox[{"SSSS", "[", 
+              RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "]"}], 
+            "\[Equal]", "0"}], "]"}]}]}], ",", 
+        RowBox[{"WriteString", "[", 
+         RowBox[{"file", ",", 
+          RowBox[{"StringForm", "[", 
+           RowBox[{
+           "\"\<`1`   `2`   `3`   `4`   G`5``6``7``8`    G`5``6``7``8`   QED  \
+ QED \\n\>\"", ",", 
+            RowBox[{"ScalarMadgraph", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"ScalarMadgraph", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"ScalarMadgraph", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"ScalarMadgraph", "[", 
+             RowBox[{"[", "l", "]"}], "]"}], ",", 
+            RowBox[{"ScalarFortran", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"ScalarFortran", "[", 
+             RowBox[{"[", "j", "]"}], "]"}], ",", 
+            RowBox[{"ScalarFortran", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], ",", 
+            RowBox[{"ScalarFortran", "[", 
+             RowBox[{"[", "l", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "15"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "i"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "j"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"l", ",", "k"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+    RowBox[{"WriteString", "[", 
+     RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "*)"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"WriteString", "[", 
+    RowBox[{"file", ",", "\"\<# SSSS Interactions \\n\>\""}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"TrueQ", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ChargeScalar", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "+", 
+           RowBox[{"ChargeScalar", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], "+", 
+           RowBox[{"ChargeScalar", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], "+", 
+           RowBox[{"ChargeScalar", "[", 
+            RowBox[{"[", "l", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+        
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"i", "\[NotEqual]", "4"}], "&&", 
+          RowBox[{"i", "\[NotEqual]", "7"}], "&&", 
+          RowBox[{"i", "\[NotEqual]", "8"}], "&&", 
+          RowBox[{"j", "\[NotEqual]", "4"}], "&&", 
+          RowBox[{"j", "\[NotEqual]", "7"}], "&&", 
+          RowBox[{"j", "\[NotEqual]", "8"}], "&&", 
+          RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+          RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+          RowBox[{"k", "\[NotEqual]", "8"}], "&&", 
+          RowBox[{"l", "\[NotEqual]", "4"}], "&&", 
+          RowBox[{"l", "\[NotEqual]", "7"}], "&&", 
+          RowBox[{"l", "\[NotEqual]", "8"}]}], ")"}], "&&", 
+        RowBox[{"!", 
+         RowBox[{"TrueQ", "[", 
+          RowBox[{
+           RowBox[{"Normal", "[", 
+            RowBox[{"SSSS", "[", 
+             RowBox[{"i", ",", "j", ",", "k", ",", "l"}], "]"}], "]"}], 
+           "\[Equal]", "0"}], "]"}]}]}], ",", 
+       RowBox[{"WriteString", "[", 
+        RowBox[{"file", ",", 
+         RowBox[{"StringForm", "[", 
+          RowBox[{
+          "\"\<`1`   `2`   `3`   `4`   G`5``6``7``8`    DUM   QED   QED \\n\>\
+\"", ",", 
+           RowBox[{"ScalarMadgraph", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"ScalarMadgraph", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], ",", 
+           RowBox[{"ScalarMadgraph", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], ",", 
+           RowBox[{"ScalarMadgraph", "[", 
+            RowBox[{"[", "l", "]"}], "]"}], ",", 
+           RowBox[{"ScalarFortran", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", 
+           RowBox[{"ScalarFortran", "[", 
+            RowBox[{"[", "j", "]"}], "]"}], ",", 
+           RowBox[{"ScalarFortran", "[", 
+            RowBox[{"[", "k", "]"}], "]"}], ",", 
+           RowBox[{"ScalarFortran", "[", 
+            RowBox[{"[", "l", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "15"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "i"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "j"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"l", ",", "k"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"WriteString", "[", 
+    RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.516629878123515*^9, 3.516629990556293*^9}, {
+  3.516705840262645*^9, 3.516705871792519*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<# LLV Interactions \\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeGauge", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "+", 
+         RowBox[{"ChargeLeptbar", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeLept", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+      RowBox[{"!", 
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Normal", "[", 
+          RowBox[{"LLG", "[", 
+           RowBox[{"k", ",", "i", ",", "j"}], "]"}], "]"}], "\[Equal]", "0"}],
+         "]"}]}]}], ",", 
+     RowBox[{"WriteString", "[", 
+      RowBox[{"file", ",", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<`1`   `2`   `3`   G`4``5``6`   QED \\n\>\"", ",", 
+         RowBox[{"LeptonMadgraph", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"LeptonMadgraph", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"GaugeMadgraph", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"GaugeFortran", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"LeptonFortran", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"LeptonFortran", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "6"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.517764447274048*^9, 3.5177645010801*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<# LLS Interactions \\n\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"TrueQ", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"ChargeScalar", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "+", 
+         RowBox[{"ChargeLeptbar", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "+", 
+         RowBox[{"ChargeLept", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "\[Equal]", "0"}], "]"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "4"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "7"}], "&&", 
+      RowBox[{"k", "\[NotEqual]", "8"}], "&&", 
+      RowBox[{"!", 
+       RowBox[{"TrueQ", "[", 
+        RowBox[{
+         RowBox[{"Normal", "[", 
+          RowBox[{"LLS", "[", 
+           RowBox[{"k", ",", "i", ",", "j"}], "]"}], "]"}], "\[Equal]", "0"}],
+         "]"}]}]}], ",", 
+     RowBox[{"WriteString", "[", 
+      RowBox[{"file", ",", 
+       RowBox[{"StringForm", "[", 
+        RowBox[{"\"\<`1`   `2`   `3`   G`4``5``6`   QED \\n\>\"", ",", 
+         RowBox[{"LeptonMadgraph", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"LeptonMadgraph", "[", 
+          RowBox[{"[", "j", "]"}], "]"}], ",", 
+         RowBox[{"ScalarMadgraph", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"ScalarFortran", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], ",", 
+         RowBox[{"LeptonFortran", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", 
+         RowBox[{"LeptonFortran", "[", 
+          RowBox[{"[", "j", "]"}], "]"}]}], "]"}]}], "]"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "15"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "6"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "6"}], "}"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"WriteString", "[", 
+  RowBox[{"file", ",", "\"\<\\n\\n\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.517764621205895*^9, 3.517764668324765*^9}, {
+  3.517764758383362*^9, 3.517764759007134*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Close", "[", "file", "]"}]], "Input"],
+
+Cell[BoxData[
+ FormBox["\<\"/tmp/minteractions.mf\"\>", TraditionalForm]], "Output",
+ CellChangeTimes->{
+  3.5153374643085823`*^9, 3.515337817652032*^9, 3.5153392639107533`*^9, 
+   3.515339887082006*^9, 3.5153401422990713`*^9, 3.515340510554309*^9, 
+   3.51534070047757*^9, 3.515340868172843*^9, 3.515340926806481*^9, {
+   3.515341883731184*^9, 3.515341936116849*^9}, 3.515342255326911*^9, 
+   3.51534239403165*^9, 3.5153426819628897`*^9, 3.515342728073195*^9, 
+   3.515342856742119*^9, 3.516629522438383*^9, 3.516629677567634*^9, 
+   3.516629715113689*^9, 3.51662983185734*^9, 3.516630000276946*^9, 
+   3.516705968347636*^9, 3.516706552626582*^9, 3.5167066875248404`*^9, 
+   3.51670740820166*^9, 3.5167145300521383`*^9, 3.517764517022546*^9, 
+   3.517764691830145*^9, {3.517764762919874*^9, 3.517764776447101*^9}, 
+   3.517770822186797*^9, 3.520883053140912*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FilePrint", "[", "file", "]"}]], "Input",
+ CellChangeTimes->{{3.515288328203443*^9, 3.515288354658165*^9}, {
+  3.515337490426743*^9, 3.515337492098145*^9}}],
+
+Cell["\<\
+# FFV Interactions 
+u   u   a   GAuu   QED 
+d   d   a   GAdd   QED 
+c   c   a   GAcc   QED 
+s   s   a   GAss   QED 
+t   t   a   GAtt   QED 
+b   b   a   GAbb   QED 
+Tau   Tau   a   GATauTau   QED 
+Tad   Tad   a   GATadTad   QED 
+Tb5   Tb5   a   GATb5Tb5   QED 
+Tb2   Tb2   a   GATb2Tb2   QED 
+T5   T5   a   GAT5T5   QED 
+T6   T6   a   GAT6T6   QED 
+u   u   z   GZuu   QED 
+d   d   z   GZdd   QED 
+c   c   z   GZcc   QED 
+s   s   z   GZss   QED 
+t   t   z   GZtt   QED 
+t   Tau   z   GZtTau   QED 
+t   Tb2   z   GZtTb2   QED 
+t   T5   z   GZtT5   QED 
+t   T6   z   GZtT6   QED 
+b   b   z   GZbb   QED 
+Tau   t   z   GZTaut   QED 
+Tau   Tau   z   GZTauTau   QED 
+Tau   Tb2   z   GZTauTb2   QED 
+Tau   T5   z   GZTauT5   QED 
+Tau   T6   z   GZTauT6   QED 
+Tad   Tad   z   GZTadTad   QED 
+Tb5   Tb5   z   GZTb5Tb5   QED 
+Tb2   t   z   GZTb2t   QED 
+Tb2   Tau   z   GZTb2Tau   QED 
+Tb2   Tb2   z   GZTb2Tb2   QED 
+Tb2   T5   z   GZTb2T5   QED 
+T5   t   z   GZT5t   QED 
+T5   Tau   z   GZT5Tau   QED 
+T5   Tb2   z   GZT5Tb2   QED 
+T5   T5   z   GZT5T5   QED 
+T5   T6   z   GZT5T6   QED 
+T6   t   z   GZT6t   QED 
+T6   Tau   z   GZT6Tau   QED 
+T6   T5   z   GZT6T5   QED 
+T6   T6   z   GZT6T6   QED 
+u   d   w+   GWpud   QED 
+c   s   w+   GWpcs   QED 
+t   b   w+   GWptb   QED 
+t   Tad   w+   GWptTad   QED 
+Tau   b   w+   GWpTaub   QED 
+Tau   Tad   w+   GWpTauTad   QED 
+Tb5   t   w+   GWpTb5t   QED 
+Tb5   Tau   w+   GWpTb5Tau   QED 
+Tb5   Tb2   w+   GWpTb5Tb2   QED 
+Tb5   T5   w+   GWpTb5T5   QED 
+Tb2   b   w+   GWpTb2b   QED 
+Tb2   Tad   w+   GWpTb2Tad   QED 
+T5   b   w+   GWpT5b   QED 
+T5   Tad   w+   GWpT5Tad   QED 
+T6   b   w+   GWpT6b   QED 
+T6   Tad   w+   GWpT6Tad   QED 
+d   u   w-   GWmdu   QED 
+s   c   w-   GWmsc   QED 
+t   Tb5   w-   GWmtTb5   QED 
+b   t   w-   GWmbt   QED 
+b   Tau   w-   GWmbTau   QED 
+b   Tb2   w-   GWmbTb2   QED 
+b   T5   w-   GWmbT5   QED 
+b   T6   w-   GWmbT6   QED 
+Tau   Tb5   w-   GWmTauTb5   QED 
+Tad   t   w-   GWmTadt   QED 
+Tad   Tau   w-   GWmTadTau   QED 
+Tad   Tb2   w-   GWmTadTb2   QED 
+Tad   T5   w-   GWmTadT5   QED 
+Tad   T6   w-   GWmTadT6   QED 
+Tb2   Tb5   w-   GWmTb2Tb5   QED 
+T5   Tb5   w-   GWmT5Tb5   QED 
+u   u   Zp   GZpuu   QED 
+d   d   Zp   GZpdd   QED 
+c   c   Zp   GZpcc   QED 
+s   s   Zp   GZpss   QED 
+t   t   Zp   GZptt   QED 
+t   Tau   Zp   GZptTau   QED 
+t   Tb2   Zp   GZptTb2   QED 
+t   T5   Zp   GZptT5   QED 
+t   T6   Zp   GZptT6   QED 
+b   b   Zp   GZpbb   QED 
+Tau   t   Zp   GZpTaut   QED 
+Tau   Tau   Zp   GZpTauTau   QED 
+Tau   Tb2   Zp   GZpTauTb2   QED 
+Tau   T5   Zp   GZpTauT5   QED 
+Tau   T6   Zp   GZpTauT6   QED 
+Tad   Tad   Zp   GZpTadTad   QED 
+Tb5   Tb5   Zp   GZpTb5Tb5   QED 
+Tb2   t   Zp   GZpTb2t   QED 
+Tb2   Tau   Zp   GZpTb2Tau   QED 
+Tb2   Tb2   Zp   GZpTb2Tb2   QED 
+Tb2   T5   Zp   GZpTb2T5   QED 
+T5   t   Zp   GZpT5t   QED 
+T5   Tau   Zp   GZpT5Tau   QED 
+T5   Tb2   Zp   GZpT5Tb2   QED 
+T5   T5   Zp   GZpT5T5   QED 
+T5   T6   Zp   GZpT5T6   QED 
+T6   t   Zp   GZpT6t   QED 
+T6   Tau   Zp   GZpT6Tau   QED 
+T6   T5   Zp   GZpT6T5   QED 
+T6   T6   Zp   GZpT6T6   QED 
+t   b   Wp+   GWpptb   QED 
+t   Tad   Wp+   GWpptTad   QED 
+Tau   b   Wp+   GWppTaub   QED 
+Tau   Tad   Wp+   GWppTauTad   QED 
+Tb5   t   Wp+   GWppTb5t   QED 
+Tb5   Tau   Wp+   GWppTb5Tau   QED 
+Tb5   Tb2   Wp+   GWppTb5Tb2   QED 
+Tb5   T5   Wp+   GWppTb5T5   QED 
+Tb2   b   Wp+   GWppTb2b   QED 
+Tb2   Tad   Wp+   GWppTb2Tad   QED 
+T5   b   Wp+   GWppT5b   QED 
+T5   Tad   Wp+   GWppT5Tad   QED 
+T6   b   Wp+   GWppT6b   QED 
+T6   Tad   Wp+   GWppT6Tad   QED 
+t   Tb5   Wp-   GWpmtTb5   QED 
+b   t   Wp-   GWpmbt   QED 
+b   Tau   Wp-   GWpmbTau   QED 
+b   Tb2   Wp-   GWpmbTb2   QED 
+b   T5   Wp-   GWpmbT5   QED 
+b   T6   Wp-   GWpmbT6   QED 
+Tau   Tb5   Wp-   GWpmTauTb5   QED 
+Tad   t   Wp-   GWpmTadt   QED 
+Tad   Tau   Wp-   GWpmTadTau   QED 
+Tad   Tb2   Wp-   GWpmTadTb2   QED 
+Tad   T5   Wp-   GWpmTadT5   QED 
+Tad   T6   Wp-   GWpmTadT6   QED 
+Tb2   Tb5   Wp-   GWpmTb2Tb5   QED 
+T5   Tb5   Wp-   GWpmT5Tb5   QED 
+
+
+# FFS Interactions 
+u   u   h   GHuu   QED 
+d   d   h   GHdd   QED 
+c   c   h   GHcc   QED 
+s   s   h   GHss   QED 
+t   t   h   GHtt   QED 
+t   Tau   h   GHtTau   QED 
+t   Tb2   h   GHtTb2   QED 
+t   T5   h   GHtT5   QED 
+t   T6   h   GHtT6   QED 
+b   b   h   GHbb   QED 
+Tau   t   h   GHTaut   QED 
+Tau   Tau   h   GHTauTau   QED 
+Tau   Tb2   h   GHTauTb2   QED 
+Tau   T5   h   GHTauT5   QED 
+Tau   T6   h   GHTauT6   QED 
+Tb2   t   h   GHTb2t   QED 
+Tb2   Tau   h   GHTb2Tau   QED 
+Tb2   Tb2   h   GHTb2Tb2   QED 
+Tb2   T5   h   GHTb2T5   QED 
+Tb2   T6   h   GHTb2T6   QED 
+T5   t   h   GHT5t   QED 
+T5   Tau   h   GHT5Tau   QED 
+T5   Tb2   h   GHT5Tb2   QED 
+T5   T5   h   GHT5T5   QED 
+T5   T6   h   GHT5T6   QED 
+T6   t   h   GHT6t   QED 
+T6   Tau   h   GHT6Tau   QED 
+T6   Tb2   h   GHT6Tb2   QED 
+T6   T5   h   GHT6T5   QED 
+T6   T6   h   GHT6T6   QED 
+u   u   H0   GH0uu   QED 
+d   d   H0   GH0dd   QED 
+c   c   H0   GH0cc   QED 
+s   s   H0   GH0ss   QED 
+t   t   H0   GH0tt   QED 
+t   Tau   H0   GH0tTau   QED 
+t   Tb2   H0   GH0tTb2   QED 
+t   T5   H0   GH0tT5   QED 
+t   T6   H0   GH0tT6   QED 
+b   b   H0   GH0bb   QED 
+Tau   t   H0   GH0Taut   QED 
+Tau   Tau   H0   GH0TauTau   QED 
+Tau   Tb2   H0   GH0TauTb2   QED 
+Tau   T5   H0   GH0TauT5   QED 
+Tau   T6   H0   GH0TauT6   QED 
+Tb2   t   H0   GH0Tb2t   QED 
+Tb2   Tau   H0   GH0Tb2Tau   QED 
+Tb2   Tb2   H0   GH0Tb2Tb2   QED 
+Tb2   T5   H0   GH0Tb2T5   QED 
+Tb2   T6   H0   GH0Tb2T6   QED 
+T5   t   H0   GH0T5t   QED 
+T5   Tau   H0   GH0T5Tau   QED 
+T5   Tb2   H0   GH0T5Tb2   QED 
+T5   T5   H0   GH0T5T5   QED 
+T5   T6   H0   GH0T5T6   QED 
+T6   t   H0   GH0T6t   QED 
+T6   Tau   H0   GH0T6Tau   QED 
+T6   Tb2   H0   GH0T6Tb2   QED 
+T6   T5   H0   GH0T6T5   QED 
+T6   T6   H0   GH0T6T6   QED 
+u   u   A0   GA0uu   QED 
+d   d   A0   GA0dd   QED 
+c   c   A0   GA0cc   QED 
+s   s   A0   GA0ss   QED 
+t   t   A0   GA0tt   QED 
+t   Tau   A0   GA0tTau   QED 
+t   Tb2   A0   GA0tTb2   QED 
+t   T5   A0   GA0tT5   QED 
+t   T6   A0   GA0tT6   QED 
+b   b   A0   GA0bb   QED 
+Tau   t   A0   GA0Taut   QED 
+Tau   Tau   A0   GA0TauTau   QED 
+Tau   Tb2   A0   GA0TauTb2   QED 
+Tau   T5   A0   GA0TauT5   QED 
+Tau   T6   A0   GA0TauT6   QED 
+Tb2   t   A0   GA0Tb2t   QED 
+Tb2   Tau   A0   GA0Tb2Tau   QED 
+Tb2   Tb2   A0   GA0Tb2Tb2   QED 
+Tb2   T5   A0   GA0Tb2T5   QED 
+Tb2   T6   A0   GA0Tb2T6   QED 
+T5   t   A0   GA0T5t   QED 
+T5   Tau   A0   GA0T5Tau   QED 
+T5   Tb2   A0   GA0T5Tb2   QED 
+T5   T5   A0   GA0T5T5   QED 
+T5   T6   A0   GA0T5T6   QED 
+T6   t   A0   GA0T6t   QED 
+T6   Tau   A0   GA0T6Tau   QED 
+T6   Tb2   A0   GA0T6Tb2   QED 
+T6   T5   A0   GA0T6T5   QED 
+T6   T6   A0   GA0T6T6   QED 
+u   d   H+   GHpud   QED 
+c   s   H+   GHpcs   QED 
+t   b   H+   GHptb   QED 
+t   Tad   H+   GHptTad   QED 
+Tau   b   H+   GHpTaub   QED 
+Tau   Tad   H+   GHpTauTad   QED 
+Tb5   t   H+   GHpTb5t   QED 
+Tb5   Tau   H+   GHpTb5Tau   QED 
+Tb5   Tb2   H+   GHpTb5Tb2   QED 
+Tb5   T5   H+   GHpTb5T5   QED 
+Tb5   T6   H+   GHpTb5T6   QED 
+Tb2   b   H+   GHpTb2b   QED 
+Tb2   Tad   H+   GHpTb2Tad   QED 
+T5   b   H+   GHpT5b   QED 
+T5   Tad   H+   GHpT5Tad   QED 
+T6   b   H+   GHpT6b   QED 
+T6   Tad   H+   GHpT6Tad   QED 
+d   u   H-   GHmdu   QED 
+s   c   H-   GHmsc   QED 
+t   Tb5   H-   GHmtTb5   QED 
+b   t   H-   GHmbt   QED 
+b   Tau   H-   GHmbTau   QED 
+b   Tb2   H-   GHmbTb2   QED 
+b   T5   H-   GHmbT5   QED 
+b   T6   H-   GHmbT6   QED 
+Tau   Tb5   H-   GHmTauTb5   QED 
+Tad   t   H-   GHmTadt   QED 
+Tad   Tau   H-   GHmTadTau   QED 
+Tad   Tb2   H-   GHmTadTb2   QED 
+Tad   T5   H-   GHmTadT5   QED 
+Tad   T6   H-   GHmTadT6   QED 
+Tb2   Tb5   H-   GHmTb2Tb5   QED 
+T5   Tb5   H-   GHmT5Tb5   QED 
+T6   Tb5   H-   GHmT6Tb5   QED 
+u   u   phi0   Gphi0uu   QED 
+d   d   phi0   Gphi0dd   QED 
+c   c   phi0   Gphi0cc   QED 
+s   s   phi0   Gphi0ss   QED 
+t   t   phi0   Gphi0tt   QED 
+t   Tau   phi0   Gphi0tTau   QED 
+t   Tb2   phi0   Gphi0tTb2   QED 
+t   T5   phi0   Gphi0tT5   QED 
+t   T6   phi0   Gphi0tT6   QED 
+b   b   phi0   Gphi0bb   QED 
+Tau   t   phi0   Gphi0Taut   QED 
+Tau   Tau   phi0   Gphi0TauTau   QED 
+Tau   Tb2   phi0   Gphi0TauTb2   QED 
+Tau   T5   phi0   Gphi0TauT5   QED 
+Tau   T6   phi0   Gphi0TauT6   QED 
+Tad   Tad   phi0   Gphi0TadTad   QED 
+Tb5   Tb5   phi0   Gphi0Tb5Tb5   QED 
+Tb2   t   phi0   Gphi0Tb2t   QED 
+Tb2   Tau   phi0   Gphi0Tb2Tau   QED 
+Tb2   Tb2   phi0   Gphi0Tb2Tb2   QED 
+Tb2   T5   phi0   Gphi0Tb2T5   QED 
+Tb2   T6   phi0   Gphi0Tb2T6   QED 
+T5   t   phi0   Gphi0T5t   QED 
+T5   Tau   phi0   Gphi0T5Tau   QED 
+T5   Tb2   phi0   Gphi0T5Tb2   QED 
+T5   T5   phi0   Gphi0T5T5   QED 
+T5   T6   phi0   Gphi0T5T6   QED 
+T6   t   phi0   Gphi0T6t   QED 
+T6   Tau   phi0   Gphi0T6Tau   QED 
+T6   Tb2   phi0   Gphi0T6Tb2   QED 
+T6   T5   phi0   Gphi0T6T5   QED 
+T6   T6   phi0   Gphi0T6T6   QED 
+u   d   phi+   Gphipud   QED 
+c   s   phi+   Gphipcs   QED 
+t   b   phi+   Gphiptb   QED 
+t   Tad   phi+   GphiptTad   QED 
+Tau   b   phi+   GphipTaub   QED 
+Tau   Tad   phi+   GphipTauTad   QED 
+Tb5   t   phi+   GphipTb5t   QED 
+Tb5   Tau   phi+   GphipTb5Tau   QED 
+Tb5   Tb2   phi+   GphipTb5Tb2   QED 
+Tb5   T5   phi+   GphipTb5T5   QED 
+Tb5   T6   phi+   GphipTb5T6   QED 
+Tb2   b   phi+   GphipTb2b   QED 
+Tb2   Tad   phi+   GphipTb2Tad   QED 
+T5   b   phi+   GphipT5b   QED 
+T5   Tad   phi+   GphipT5Tad   QED 
+T6   b   phi+   GphipT6b   QED 
+T6   Tad   phi+   GphipT6Tad   QED 
+d   u   phi-   Gphimdu   QED 
+s   c   phi-   Gphimsc   QED 
+t   Tb5   phi-   GphimtTb5   QED 
+b   t   phi-   Gphimbt   QED 
+b   Tau   phi-   GphimbTau   QED 
+b   Tb2   phi-   GphimbTb2   QED 
+b   T5   phi-   GphimbT5   QED 
+b   T6   phi-   GphimbT6   QED 
+Tau   Tb5   phi-   GphimTauTb5   QED 
+Tad   t   phi-   GphimTadt   QED 
+Tad   Tau   phi-   GphimTadTau   QED 
+Tad   Tb2   phi-   GphimTadTb2   QED 
+Tad   T5   phi-   GphimTadT5   QED 
+Tad   T6   phi-   GphimTadT6   QED 
+Tb2   Tb5   phi-   GphimTb2Tb5   QED 
+T5   Tb5   phi-   GphimT5Tb5   QED 
+T6   Tb5   phi-   GphimT6Tb5   QED 
+u   u   eta0   Geta0uu   QED 
+d   d   eta0   Geta0dd   QED 
+c   c   eta0   Geta0cc   QED 
+s   s   eta0   Geta0ss   QED 
+t   t   eta0   Geta0tt   QED 
+t   Tau   eta0   Geta0tTau   QED 
+t   Tb2   eta0   Geta0tTb2   QED 
+t   T5   eta0   Geta0tT5   QED 
+t   T6   eta0   Geta0tT6   QED 
+b   b   eta0   Geta0bb   QED 
+Tau   t   eta0   Geta0Taut   QED 
+Tau   Tau   eta0   Geta0TauTau   QED 
+Tau   Tb2   eta0   Geta0TauTb2   QED 
+Tau   T5   eta0   Geta0TauT5   QED 
+Tau   T6   eta0   Geta0TauT6   QED 
+Tad   Tad   eta0   Geta0TadTad   QED 
+Tb5   Tb5   eta0   Geta0Tb5Tb5   QED 
+Tb2   t   eta0   Geta0Tb2t   QED 
+Tb2   Tau   eta0   Geta0Tb2Tau   QED 
+Tb2   Tb2   eta0   Geta0Tb2Tb2   QED 
+Tb2   T5   eta0   Geta0Tb2T5   QED 
+Tb2   T6   eta0   Geta0Tb2T6   QED 
+T5   t   eta0   Geta0T5t   QED 
+T5   Tau   eta0   Geta0T5Tau   QED 
+T5   Tb2   eta0   Geta0T5Tb2   QED 
+T5   T5   eta0   Geta0T5T5   QED 
+T5   T6   eta0   Geta0T5T6   QED 
+T6   t   eta0   Geta0T6t   QED 
+T6   Tau   eta0   Geta0T6Tau   QED 
+T6   Tb2   eta0   Geta0T6Tb2   QED 
+T6   T5   eta0   Geta0T6T5   QED 
+T6   T6   eta0   Geta0T6T6   QED 
+u   d   eta+   Getapud   QED 
+c   s   eta+   Getapcs   QED 
+t   b   eta+   Getaptb   QED 
+t   Tad   eta+   GetaptTad   QED 
+Tau   b   eta+   GetapTaub   QED 
+Tau   Tad   eta+   GetapTauTad   QED 
+Tb5   t   eta+   GetapTb5t   QED 
+Tb5   Tau   eta+   GetapTb5Tau   QED 
+Tb5   Tb2   eta+   GetapTb5Tb2   QED 
+Tb5   T5   eta+   GetapTb5T5   QED 
+Tb5   T6   eta+   GetapTb5T6   QED 
+Tb2   b   eta+   GetapTb2b   QED 
+Tb2   Tad   eta+   GetapTb2Tad   QED 
+T5   b   eta+   GetapT5b   QED 
+T5   Tad   eta+   GetapT5Tad   QED 
+T6   b   eta+   GetapT6b   QED 
+T6   Tad   eta+   GetapT6Tad   QED 
+d   u   eta-   Getamdu   QED 
+s   c   eta-   Getamsc   QED 
+t   Tb5   eta-   GetamtTb5   QED 
+b   t   eta-   Getambt   QED 
+b   Tau   eta-   GetambTau   QED 
+b   Tb2   eta-   GetambTb2   QED 
+b   T5   eta-   GetambT5   QED 
+b   T6   eta-   GetambT6   QED 
+Tau   Tb5   eta-   GetamTauTb5   QED 
+Tad   t   eta-   GetamTadt   QED 
+Tad   Tau   eta-   GetamTadTau   QED 
+Tad   Tb2   eta-   GetamTadTb2   QED 
+Tad   T5   eta-   GetamTadT5   QED 
+Tad   T6   eta-   GetamTadT6   QED 
+Tb2   Tb5   eta-   GetamTb2Tb5   QED 
+T5   Tb5   eta-   GetamT5Tb5   QED 
+T6   Tb5   eta-   GetamT6Tb5   QED 
+u   u   sig   Gsiguu   QED 
+d   d   sig   Gsigdd   QED 
+c   c   sig   Gsigcc   QED 
+s   s   sig   Gsigss   QED 
+t   t   sig   Gsigtt   QED 
+t   Tau   sig   GsigtTau   QED 
+t   Tb2   sig   GsigtTb2   QED 
+t   T5   sig   GsigtT5   QED 
+t   T6   sig   GsigtT6   QED 
+b   b   sig   Gsigbb   QED 
+Tau   t   sig   GsigTaut   QED 
+Tau   Tau   sig   GsigTauTau   QED 
+Tau   Tb2   sig   GsigTauTb2   QED 
+Tau   T5   sig   GsigTauT5   QED 
+Tau   T6   sig   GsigTauT6   QED 
+Tb2   t   sig   GsigTb2t   QED 
+Tb2   Tau   sig   GsigTb2Tau   QED 
+Tb2   Tb2   sig   GsigTb2Tb2   QED 
+Tb2   T5   sig   GsigTb2T5   QED 
+Tb2   T6   sig   GsigTb2T6   QED 
+T5   t   sig   GsigT5t   QED 
+T5   Tau   sig   GsigT5Tau   QED 
+T5   Tb2   sig   GsigT5Tb2   QED 
+T5   T5   sig   GsigT5T5   QED 
+T5   T6   sig   GsigT5T6   QED 
+T6   t   sig   GsigT6t   QED 
+T6   Tau   sig   GsigT6Tau   QED 
+T6   Tb2   sig   GsigT6Tb2   QED 
+T6   T5   sig   GsigT6T5   QED 
+T6   T6   sig   GsigT6T6   QED 
+
+
+# VVS Interactions 
+z   z   h   GHZZ   QED 
+w+   w-   h   GHWpWm   QED 
+z   Zp   h   GHZZp   QED 
+Zp   Zp   h   GHZpZp   QED 
+w-   Wp+   h   GHWmWpp   QED 
+w+   Wp-   h   GHWpWpm   QED 
+Wp+   Wp-   h   GHWppWpm   QED 
+z   z   H0   GH0ZZ   QED 
+w+   w-   H0   GH0WpWm   QED 
+z   Zp   H0   GH0ZZp   QED 
+Zp   Zp   H0   GH0ZpZp   QED 
+w-   Wp+   H0   GH0WmWpp   QED 
+w+   Wp-   H0   GH0WpWpm   QED 
+Wp+   Wp-   H0   GH0WppWpm   QED 
+w-   Wp+   phi0   Gphi0WmWpp   QED 
+w+   Wp-   phi0   Gphi0WpWpm   QED 
+w-   Zp   phi+   GphipWmZp   QED 
+a   Wp-   phi+   GphipAWpm   QED 
+z   Wp-   phi+   GphipZWpm   QED 
+w+   Zp   phi-   GphimWpZp   QED 
+a   Wp+   phi-   GphimAWpp   QED 
+z   Wp+   phi-   GphimZWpp   QED 
+a   Wp-   eta+   GetapAWpm   QED 
+z   Wp-   eta+   GetapZWpm   QED 
+a   Wp+   eta-   GetamAWpp   QED 
+z   Wp+   eta-   GetamZWpp   QED 
+
+
+# VSS Interactions 
+a   H+   H-   GAHpHm   QED 
+a   phi+   phi-   GAphipphim   QED 
+a   phi-   eta+   GAphimetap   QED 
+a   phi+   eta-   GAphipetam   QED 
+a   eta+   eta-   GAetapetam   QED 
+z   h   A0   GZHA0   QED 
+z   H0   A0   GZH0A0   QED 
+z   H+   H-   GZHpHm   QED 
+z   phi+   phi-   GZphipphim   QED 
+z   phi-   eta+   GZphimetap   QED 
+z   phi+   eta-   GZphipetam   QED 
+z   eta+   eta-   GZetapetam   QED 
+w+   h   H-   GWpHHm   QED 
+w+   H0   H-   GWpH0Hm   QED 
+w+   A0   H-   GWpA0Hm   QED 
+w+   phi0   phi-   GWpphi0phim   QED 
+w+   phi-   eta0   GWpphimeta0   QED 
+w+   phi0   eta-   GWpphi0etam   QED 
+w+   eta0   eta-   GWpeta0etam   QED 
+w-   h   H+   GWmHHp   QED 
+w-   H0   H+   GWmH0Hp   QED 
+w-   A0   H+   GWmA0Hp   QED 
+w-   phi0   phi+   GWmphi0phip   QED 
+w-   phi+   eta0   GWmphipeta0   QED 
+w-   phi0   eta+   GWmphi0etap   QED 
+w-   eta0   eta+   GWmeta0etap   QED 
+Zp   h   A0   GZpHA0   QED 
+Zp   H0   A0   GZpH0A0   QED 
+Zp   H+   H-   GZpHpHm   QED 
+Zp   h   phi0   GZpHphi0   QED 
+Zp   phi+   phi-   GZpphipphim   QED 
+Zp   h   eta0   GZpHeta0   QED 
+Zp   phi-   eta+   GZpphimetap   QED 
+Zp   phi+   eta-   GZpphipetam   QED 
+Zp   eta+   eta-   GZpetapetam   QED 
+Zp   A0   sig   GZpA0sig   QED 
+Wp+   h   H-   GWppHHm   QED 
+Wp+   H0   H-   GWppH0Hm   QED 
+Wp+   A0   H-   GWppA0Hm   QED 
+Wp+   h   phi-   GWppHphim   QED 
+Wp+   phi0   phi-   GWppphi0phim   QED 
+Wp+   phi-   eta0   GWppphimeta0   QED 
+Wp+   h   eta-   GWppHetam   QED 
+Wp+   phi0   eta-   GWppphi0etam   QED 
+Wp+   eta0   eta-   GWppeta0etam   QED 
+Wp+   H-   sig   GWppHmsig   QED 
+Wp-   h   H+   GWpmHHp   QED 
+Wp-   H0   H+   GWpmH0Hp   QED 
+Wp-   A0   H+   GWpmA0Hp   QED 
+Wp-   h   phi+   GWpmHphip   QED 
+Wp-   phi0   phi+   GWpmphi0phip   QED 
+Wp-   phi+   eta0   GWpmphipeta0   QED 
+Wp-   h   eta+   GWpmHetap   QED 
+Wp-   phi0   eta+   GWpmphi0etap   QED 
+Wp-   eta0   eta+   GWpmeta0etap   QED 
+Wp-   H+   sig   GWpmHpsig   QED 
+
+
+# VVSS Interactions 
+a   a   H+   H-   GAAHpHm   DUM    QED    QED 
+a   a   phi+   phi-   GAAphipphim   DUM    QED    QED 
+a   a   phi-   eta+   GAAphimetap   DUM    QED    QED 
+a   a   phi+   eta-   GAAphipetam   DUM    QED    QED 
+a   a   eta+   eta-   GAAetapetam   DUM    QED    QED 
+a   z   H+   H-   GAZHpHm   DUM    QED    QED 
+a   z   phi+   phi-   GAZphipphim   DUM    QED    QED 
+a   z   phi-   eta+   GAZphimetap   DUM    QED    QED 
+a   z   phi+   eta-   GAZphipetam   DUM    QED    QED 
+a   z   eta+   eta-   GAZetapetam   DUM    QED    QED 
+z   z   h   h   GZZHH   DUM    QED    QED 
+z   z   H0   H0   GZZH0H0   DUM    QED    QED 
+z   z   A0   A0   GZZA0A0   DUM    QED    QED 
+z   z   H+   H-   GZZHpHm   DUM    QED    QED 
+z   z   phi+   phi-   GZZphipphim   DUM    QED    QED 
+z   z   phi-   eta+   GZZphimetap   DUM    QED    QED 
+z   z   phi+   eta-   GZZphipetam   DUM    QED    QED 
+z   z   eta+   eta-   GZZetapetam   DUM    QED    QED 
+a   w+   h   H-   GAWpHHm   DUM    QED    QED 
+a   w+   H0   H-   GAWpH0Hm   DUM    QED    QED 
+a   w+   A0   H-   GAWpA0Hm   DUM    QED    QED 
+a   w+   phi0   phi-   GAWpphi0phim   DUM    QED    QED 
+a   w+   phi0   eta-   GAWpphi0etam   DUM    QED    QED 
+a   w+   eta0   eta-   GAWpeta0etam   DUM    QED    QED 
+z   w+   h   H-   GZWpHHm   DUM    QED    QED 
+z   w+   H0   H-   GZWpH0Hm   DUM    QED    QED 
+z   w+   A0   H-   GZWpA0Hm   DUM    QED    QED 
+z   w+   phi0   phi-   GZWpphi0phim   DUM    QED    QED 
+z   w+   phi0   eta-   GZWpphi0etam   DUM    QED    QED 
+z   w+   eta0   eta-   GZWpeta0etam   DUM    QED    QED 
+w+   w+   H-   H-   GWpWpHmHm   DUM    QED    QED 
+w+   w+   phi-   phi-   GWpWpphimphim   DUM    QED    QED 
+a   w-   h   H+   GAWmHHp   DUM    QED    QED 
+a   w-   H0   H+   GAWmH0Hp   DUM    QED    QED 
+a   w-   A0   H+   GAWmA0Hp   DUM    QED    QED 
+a   w-   phi0   phi+   GAWmphi0phip   DUM    QED    QED 
+a   w-   phi0   eta+   GAWmphi0etap   DUM    QED    QED 
+a   w-   eta0   eta+   GAWmeta0etap   DUM    QED    QED 
+z   w-   h   H+   GZWmHHp   DUM    QED    QED 
+z   w-   H0   H+   GZWmH0Hp   DUM    QED    QED 
+z   w-   A0   H+   GZWmA0Hp   DUM    QED    QED 
+z   w-   phi0   phi+   GZWmphi0phip   DUM    QED    QED 
+z   w-   phi0   eta+   GZWmphi0etap   DUM    QED    QED 
+z   w-   eta0   eta+   GZWmeta0etap   DUM    QED    QED 
+w+   w-   h   h   GWpWmHH   DUM    QED    QED 
+w+   w-   H0   H0   GWpWmH0H0   DUM    QED    QED 
+w+   w-   A0   A0   GWpWmA0A0   DUM    QED    QED 
+w+   w-   H+   H-   GWpWmHpHm   DUM    QED    QED 
+w+   w-   phi0   phi0   GWpWmphi0phi0   DUM    QED    QED 
+w+   w-   phi+   phi-   GWpWmphipphim   DUM    QED    QED 
+w-   w-   H+   H+   GWmWmHpHp   DUM    QED    QED 
+w-   w-   phi+   phi+   GWmWmphipphip   DUM    QED    QED 
+a   Zp   H+   H-   GAZpHpHm   DUM    QED    QED 
+a   Zp   phi+   phi-   GAZpphipphim   DUM    QED    QED 
+a   Zp   phi-   eta+   GAZpphimetap   DUM    QED    QED 
+a   Zp   phi+   eta-   GAZpphipetam   DUM    QED    QED 
+a   Zp   eta+   eta-   GAZpetapetam   DUM    QED    QED 
+z   Zp   h   h   GZZpHH   DUM    QED    QED 
+z   Zp   H0   H0   GZZpH0H0   DUM    QED    QED 
+z   Zp   A0   A0   GZZpA0A0   DUM    QED    QED 
+z   Zp   H+   H-   GZZpHpHm   DUM    QED    QED 
+z   Zp   phi+   phi-   GZZpphipphim   DUM    QED    QED 
+z   Zp   phi-   eta+   GZZpphimetap   DUM    QED    QED 
+z   Zp   phi+   eta-   GZZpphipetam   DUM    QED    QED 
+z   Zp   eta+   eta-   GZZpetapetam   DUM    QED    QED 
+w+   Zp   H0   H-   GWpZpH0Hm   DUM    QED    QED 
+w+   Zp   A0   H-   GWpZpA0Hm   DUM    QED    QED 
+w+   Zp   h   phi-   GWpZpHphim   DUM    QED    QED 
+w+   Zp   phi0   phi-   GWpZpphi0phim   DUM    QED    QED 
+w-   Zp   H0   H+   GWmZpH0Hp   DUM    QED    QED 
+w-   Zp   A0   H+   GWmZpA0Hp   DUM    QED    QED 
+w-   Zp   h   phi+   GWmZpHphip   DUM    QED    QED 
+w-   Zp   phi0   phi+   GWmZpphi0phip   DUM    QED    QED 
+Zp   Zp   h   h   GZpZpHH   DUM    QED    QED 
+Zp   Zp   H0   H0   GZpZpH0H0   DUM    QED    QED 
+Zp   Zp   A0   A0   GZpZpA0A0   DUM    QED    QED 
+Zp   Zp   H+   H-   GZpZpHpHm   DUM    QED    QED 
+Zp   Zp   phi+   phi-   GZpZpphipphim   DUM    QED    QED 
+a   Wp+   h   H-   GAWppHHm   DUM    QED    QED 
+a   Wp+   H0   H-   GAWppH0Hm   DUM    QED    QED 
+a   Wp+   A0   H-   GAWppA0Hm   DUM    QED    QED 
+a   Wp+   h   phi-   GAWppHphim   DUM    QED    QED 
+a   Wp+   phi0   phi-   GAWppphi0phim   DUM    QED    QED 
+a   Wp+   h   eta-   GAWppHetam   DUM    QED    QED 
+a   Wp+   phi0   eta-   GAWppphi0etam   DUM    QED    QED 
+a   Wp+   eta0   eta-   GAWppeta0etam   DUM    QED    QED 
+z   Wp+   h   H-   GZWppHHm   DUM    QED    QED 
+z   Wp+   H0   H-   GZWppH0Hm   DUM    QED    QED 
+z   Wp+   A0   H-   GZWppA0Hm   DUM    QED    QED 
+z   Wp+   h   phi-   GZWppHphim   DUM    QED    QED 
+z   Wp+   phi0   phi-   GZWppphi0phim   DUM    QED    QED 
+z   Wp+   h   eta-   GZWppHetam   DUM    QED    QED 
+z   Wp+   phi0   eta-   GZWppphi0etam   DUM    QED    QED 
+z   Wp+   eta0   eta-   GZWppeta0etam   DUM    QED    QED 
+w+   Wp+   H-   H-   GWpWppHmHm   DUM    QED    QED 
+w+   Wp+   phi-   phi-   GWpWppphimphim   DUM    QED    QED 
+w-   Wp+   h   h   GWmWppHH   DUM    QED    QED 
+w-   Wp+   H0   H0   GWmWppH0H0   DUM    QED    QED 
+w-   Wp+   A0   A0   GWmWppA0A0   DUM    QED    QED 
+w-   Wp+   H+   H-   GWmWppHpHm   DUM    QED    QED 
+w-   Wp+   h   phi0   GWmWppHphi0   DUM    QED    QED 
+w-   Wp+   phi0   phi0   GWmWppphi0phi0   DUM    QED    QED 
+w-   Wp+   phi+   phi-   GWmWppphipphim   DUM    QED    QED 
+Zp   Wp+   H0   H-   GZpWppH0Hm   DUM    QED    QED 
+Zp   Wp+   A0   H-   GZpWppA0Hm   DUM    QED    QED 
+Zp   Wp+   phi0   phi-   GZpWppphi0phim   DUM    QED    QED 
+Wp+   Wp+   H-   H-   GWppWppHmHm   DUM    QED    QED 
+Wp+   Wp+   phi-   phi-   GWppWppphimphim   DUM    QED    QED 
+a   Wp-   h   H+   GAWpmHHp   DUM    QED    QED 
+a   Wp-   H0   H+   GAWpmH0Hp   DUM    QED    QED 
+a   Wp-   A0   H+   GAWpmA0Hp   DUM    QED    QED 
+a   Wp-   h   phi+   GAWpmHphip   DUM    QED    QED 
+a   Wp-   phi0   phi+   GAWpmphi0phip   DUM    QED    QED 
+a   Wp-   h   eta+   GAWpmHetap   DUM    QED    QED 
+a   Wp-   phi0   eta+   GAWpmphi0etap   DUM    QED    QED 
+a   Wp-   eta0   eta+   GAWpmeta0etap   DUM    QED    QED 
+z   Wp-   h   H+   GZWpmHHp   DUM    QED    QED 
+z   Wp-   H0   H+   GZWpmH0Hp   DUM    QED    QED 
+z   Wp-   A0   H+   GZWpmA0Hp   DUM    QED    QED 
+z   Wp-   h   phi+   GZWpmHphip   DUM    QED    QED 
+z   Wp-   phi0   phi+   GZWpmphi0phip   DUM    QED    QED 
+z   Wp-   h   eta+   GZWpmHetap   DUM    QED    QED 
+z   Wp-   phi0   eta+   GZWpmphi0etap   DUM    QED    QED 
+z   Wp-   eta0   eta+   GZWpmeta0etap   DUM    QED    QED 
+w+   Wp-   h   h   GWpWpmHH   DUM    QED    QED 
+w+   Wp-   H0   H0   GWpWpmH0H0   DUM    QED    QED 
+w+   Wp-   A0   A0   GWpWpmA0A0   DUM    QED    QED 
+w+   Wp-   H+   H-   GWpWpmHpHm   DUM    QED    QED 
+w+   Wp-   h   phi0   GWpWpmHphi0   DUM    QED    QED 
+w+   Wp-   phi0   phi0   GWpWpmphi0phi0   DUM    QED    QED 
+w+   Wp-   phi+   phi-   GWpWpmphipphim   DUM    QED    QED 
+w-   Wp-   H+   H+   GWmWpmHpHp   DUM    QED    QED 
+w-   Wp-   phi+   phi+   GWmWpmphipphip   DUM    QED    QED 
+Zp   Wp-   H0   H+   GZpWpmH0Hp   DUM    QED    QED 
+Zp   Wp-   A0   H+   GZpWpmA0Hp   DUM    QED    QED 
+Zp   Wp-   phi0   phi+   GZpWpmphi0phip   DUM    QED    QED 
+Wp+   Wp-   h   h   GWppWpmHH   DUM    QED    QED 
+Wp+   Wp-   H0   H0   GWppWpmH0H0   DUM    QED    QED 
+Wp+   Wp-   A0   A0   GWppWpmA0A0   DUM    QED    QED 
+Wp+   Wp-   H+   H-   GWppWpmHpHm   DUM    QED    QED 
+Wp+   Wp-   phi0   phi0   GWppWpmphi0phi0   DUM    QED    QED 
+Wp+   Wp-   phi+   phi-   GWppWpmphipphim   DUM    QED    QED 
+Wp-   Wp-   H+   H+   GWpmWpmHpHp   DUM    QED    QED 
+Wp-   Wp-   phi+   phi+   GWpmWpmphipphip   DUM    QED    QED 
+
+
+# VVV Interactions 
+w+   w-   a   GWpWmA   QED 
+w+   w-   z   GWpWmZ   QED 
+w+   w-   Zp   GWpWmZp   QED 
+w+   Wp-   z   GWpWpmZ   QED 
+w+   Wp-   Zp   GWpWpmZp   QED 
+Wp+   Wp-   a   GWppWpmA   QED 
+Wp+   Wp-   z   GWppWpmZ   QED 
+Wp+   Wp-   Zp   GWppWpmZp   QED 
+
+
+# VVVV Interactions 
+a   a   w+   w-   GAAWpWm   DUM   QED   QED 
+a   a   Wp+   Wp-   GAAWppWpm   DUM   QED   QED 
+a   z   w+   w-   GAZWpWm   DUM   QED   QED 
+a   z   w+   Wp-   GAZWpWpm   DUM   QED   QED 
+a   z   Wp+   Wp-   GAZWppWpm   DUM   QED   QED 
+z   z   w+   w-   GZZWpWm   DUM   QED   QED 
+z   z   w+   Wp-   GZZWpWpm   DUM   QED   QED 
+z   z   Wp+   Wp-   GZZWppWpm   DUM   QED   QED 
+w+   w+   w-   w-   GWpWpWmWm   DUM   QED   QED 
+w+   w+   w-   Wp-   GWpWpWmWpm   DUM   QED   QED 
+w+   w+   Wp-   Wp-   GWpWpWpmWpm   DUM   QED   QED 
+a   Zp   w+   w-   GAZpWpWm   DUM   QED   QED 
+a   Zp   w+   Wp-   GAZpWpWpm   DUM   QED   QED 
+a   Zp   Wp+   Wp-   GAZpWppWpm   DUM   QED   QED 
+z   Zp   w+   w-   GZZpWpWm   DUM   QED   QED 
+z   Zp   w+   Wp-   GZZpWpWpm   DUM   QED   QED 
+z   Zp   Wp+   Wp-   GZZpWppWpm   DUM   QED   QED 
+Zp   Zp   w+   w-   GZpZpWpWm   DUM   QED   QED 
+Zp   Zp   w+   Wp-   GZpZpWpWpm   DUM   QED   QED 
+Zp   Zp   Wp+   Wp-   GZpZpWppWpm   DUM   QED   QED 
+w+   Wp+   w-   w-   GWpWppWmWm   DUM   QED   QED 
+w+   Wp+   w-   Wp-   GWpWppWmWpm   DUM   QED   QED 
+w+   Wp+   Wp-   Wp-   GWpWppWpmWpm   DUM   QED   QED 
+Wp+   Wp+   w-   w-   GWppWppWmWm   DUM   QED   QED 
+Wp+   Wp+   w-   Wp-   GWppWppWmWpm   DUM   QED   QED 
+Wp+   Wp+   Wp-   Wp-   GWppWppWpmWpm   DUM   QED   QED 
+
+
+# SSS Interactions 
+h   h   h   GHHH   QED 
+H0   h   h   GH0HH   QED 
+H0   H0   h   GH0H0H   QED 
+H0   H0   H0   GH0H0H0   QED 
+A0   A0   h   GA0A0H   QED 
+A0   A0   H0   GA0A0H0   QED 
+H-   H+   h   GHmHpH   QED 
+H-   H+   H0   GHmHpH0   QED 
+phi0   phi0   h   Gphi0phi0H   QED 
+phi0   phi0   H0   Gphi0phi0H0   QED 
+phi-   phi+   h   GphimphipH   QED 
+phi-   phi+   H0   GphimphipH0   QED 
+eta0   phi0   h   Geta0phi0H   QED 
+eta0   phi0   H0   Geta0phi0H0   QED 
+eta0   eta0   h   Geta0eta0H   QED 
+eta0   eta0   H0   Geta0eta0H0   QED 
+eta+   phi-   h   GetapphimH   QED 
+eta+   phi-   H0   GetapphimH0   QED 
+eta-   phi+   h   GetamphipH   QED 
+eta-   phi+   H0   GetamphipH0   QED 
+eta-   eta+   h   GetametapH   QED 
+eta-   eta+   H0   GetametapH0   QED 
+sig   h   h   GsigHH   QED 
+sig   H0   h   GsigH0H   QED 
+sig   H0   H0   GsigH0H0   QED 
+sig   A0   A0   GsigA0A0   QED 
+sig   H-   H+   GsigHmHp   QED 
+sig   sig   h   GsigsigH   QED 
+sig   sig   H0   GsigsigH0   QED 
+sig   sig   sig   Gsigsigsig   QED 
+
+
+# SSSS Interactions 
+h   h   h   h   GHHHH    DUM   QED   QED 
+H0   h   h   h   GH0HHH    DUM   QED   QED 
+H0   H0   h   h   GH0H0HH    DUM   QED   QED 
+H0   H0   H0   h   GH0H0H0H    DUM   QED   QED 
+H0   H0   H0   H0   GH0H0H0H0    DUM   QED   QED 
+A0   A0   h   h   GA0A0HH    DUM   QED   QED 
+A0   A0   H0   h   GA0A0H0H    DUM   QED   QED 
+A0   A0   H0   H0   GA0A0H0H0    DUM   QED   QED 
+A0   A0   A0   A0   GA0A0A0A0    DUM   QED   QED 
+H-   H+   h   h   GHmHpHH    DUM   QED   QED 
+H-   H+   H0   h   GHmHpH0H    DUM   QED   QED 
+H-   H+   H0   H0   GHmHpH0H0    DUM   QED   QED 
+H-   H+   A0   A0   GHmHpA0A0    DUM   QED   QED 
+H-   H-   H+   H+   GHmHmHpHp    DUM   QED   QED 
+phi0   phi0   h   h   Gphi0phi0HH    DUM   QED   QED 
+phi0   phi0   H0   h   Gphi0phi0H0H    DUM   QED   QED 
+phi0   phi0   H0   H0   Gphi0phi0H0H0    DUM   QED   QED 
+phi0   phi0   A0   A0   Gphi0phi0A0A0    DUM   QED   QED 
+phi0   phi0   H-   H+   Gphi0phi0HmHp    DUM   QED   QED 
+phi0   phi0   phi0   phi0   Gphi0phi0phi0phi0    DUM   QED   QED 
+phi-   phi+   h   h   GphimphipHH    DUM   QED   QED 
+phi-   phi+   H0   h   GphimphipH0H    DUM   QED   QED 
+phi-   phi+   H0   H0   GphimphipH0H0    DUM   QED   QED 
+phi-   phi+   A0   A0   GphimphipA0A0    DUM   QED   QED 
+phi-   phi+   H-   H+   GphimphipHmHp    DUM   QED   QED 
+phi-   phi+   phi0   phi0   Gphimphipphi0phi0    DUM   QED   QED 
+phi-   phi-   phi+   phi+   Gphimphimphipphip    DUM   QED   QED 
+eta0   phi0   h   h   Geta0phi0HH    DUM   QED   QED 
+eta0   phi0   H0   h   Geta0phi0H0H    DUM   QED   QED 
+eta0   phi0   H0   H0   Geta0phi0H0H0    DUM   QED   QED 
+eta0   phi0   A0   A0   Geta0phi0A0A0    DUM   QED   QED 
+eta0   phi0   H-   H+   Geta0phi0HmHp    DUM   QED   QED 
+eta0   phi0   phi0   phi0   Geta0phi0phi0phi0    DUM   QED   QED 
+eta0   phi+   H-   h   Geta0phipHmH    DUM   QED   QED 
+eta0   phi+   H-   H0   Geta0phipHmH0    DUM   QED   QED 
+eta0   phi+   H-   A0   Geta0phipHmA0    DUM   QED   QED 
+eta0   phi-   H+   h   Geta0phimHpH    DUM   QED   QED 
+eta0   phi-   H+   H0   Geta0phimHpH0    DUM   QED   QED 
+eta0   phi-   H+   A0   Geta0phimHpA0    DUM   QED   QED 
+eta0   phi-   phi+   phi0   Geta0phimphipphi0    DUM   QED   QED 
+eta0   eta0   h   h   Geta0eta0HH    DUM   QED   QED 
+eta0   eta0   H0   h   Geta0eta0H0H    DUM   QED   QED 
+eta0   eta0   H0   H0   Geta0eta0H0H0    DUM   QED   QED 
+eta0   eta0   A0   A0   Geta0eta0A0A0    DUM   QED   QED 
+eta0   eta0   H-   H+   Geta0eta0HmHp    DUM   QED   QED 
+eta0   eta0   phi0   phi0   Geta0eta0phi0phi0    DUM   QED   QED 
+eta0   eta0   phi-   phi+   Geta0eta0phimphip    DUM   QED   QED 
+eta0   eta0   eta0   phi0   Geta0eta0eta0phi0    DUM   QED   QED 
+eta0   eta0   eta0   eta0   Geta0eta0eta0eta0    DUM   QED   QED 
+eta+   phi0   H-   h   Getapphi0HmH    DUM   QED   QED 
+eta+   phi0   H-   H0   Getapphi0HmH0    DUM   QED   QED 
+eta+   phi0   H-   A0   Getapphi0HmA0    DUM   QED   QED 
+eta+   phi+   H-   H-   GetapphipHmHm    DUM   QED   QED 
+eta+   phi-   h   h   GetapphimHH    DUM   QED   QED 
+eta+   phi-   H0   h   GetapphimH0H    DUM   QED   QED 
+eta+   phi-   H0   H0   GetapphimH0H0    DUM   QED   QED 
+eta+   phi-   A0   h   GetapphimA0H    DUM   QED   QED 
+eta+   phi-   A0   H0   GetapphimA0H0    DUM   QED   QED 
+eta+   phi-   A0   A0   GetapphimA0A0    DUM   QED   QED 
+eta+   phi-   phi0   phi0   Getapphimphi0phi0    DUM   QED   QED 
+eta+   phi-   phi-   phi+   Getapphimphimphip    DUM   QED   QED 
+eta+   eta0   eta0   phi-   Getapeta0eta0phim    DUM   QED   QED 
+eta-   phi0   H+   h   Getamphi0HpH    DUM   QED   QED 
+eta-   phi0   H+   H0   Getamphi0HpH0    DUM   QED   QED 
+eta-   phi0   H+   A0   Getamphi0HpA0    DUM   QED   QED 
+eta-   phi+   h   h   GetamphipHH    DUM   QED   QED 
+eta-   phi+   H0   h   GetamphipH0H    DUM   QED   QED 
+eta-   phi+   H0   H0   GetamphipH0H0    DUM   QED   QED 
+eta-   phi+   A0   h   GetamphipA0H    DUM   QED   QED 
+eta-   phi+   A0   H0   GetamphipA0H0    DUM   QED   QED 
+eta-   phi+   A0   A0   GetamphipA0A0    DUM   QED   QED 
+eta-   phi+   phi0   phi0   Getamphipphi0phi0    DUM   QED   QED 
+eta-   phi-   H+   H+   GetamphimHpHp    DUM   QED   QED 
+eta-   phi-   phi+   phi+   Getamphimphipphip    DUM   QED   QED 
+eta-   eta0   eta0   phi+   Getameta0eta0phip    DUM   QED   QED 
+eta-   eta+   h   h   GetametapHH    DUM   QED   QED 
+eta-   eta+   H0   h   GetametapH0H    DUM   QED   QED 
+eta-   eta+   H0   H0   GetametapH0H0    DUM   QED   QED 
+eta-   eta+   A0   A0   GetametapA0A0    DUM   QED   QED 
+eta-   eta+   H-   H+   GetametapHmHp    DUM   QED   QED 
+eta-   eta+   phi0   phi0   Getametapphi0phi0    DUM   QED   QED 
+eta-   eta+   phi-   phi+   Getametapphimphip    DUM   QED   QED 
+eta-   eta+   eta0   phi0   Getametapeta0phi0    DUM   QED   QED 
+eta-   eta+   eta0   eta0   Getametapeta0eta0    DUM   QED   QED 
+eta-   eta+   eta+   phi-   Getametapetapphim    DUM   QED   QED 
+eta-   eta-   eta+   phi+   Getametametapphip    DUM   QED   QED 
+eta-   eta-   eta+   eta+   Getametametapetap    DUM   QED   QED 
+sig   h   h   h   GsigHHH    DUM   QED   QED 
+sig   H0   h   h   GsigH0HH    DUM   QED   QED 
+sig   H0   H0   h   GsigH0H0H    DUM   QED   QED 
+sig   H0   H0   H0   GsigH0H0H0    DUM   QED   QED 
+sig   A0   A0   h   GsigA0A0H    DUM   QED   QED 
+sig   A0   A0   H0   GsigA0A0H0    DUM   QED   QED 
+sig   H-   H+   h   GsigHmHpH    DUM   QED   QED 
+sig   H-   H+   H0   GsigHmHpH0    DUM   QED   QED 
+sig   sig   h   h   GsigsigHH    DUM   QED   QED 
+sig   sig   H0   h   GsigsigH0H    DUM   QED   QED 
+sig   sig   H0   H0   GsigsigH0H0    DUM   QED   QED 
+sig   sig   A0   A0   GsigsigA0A0    DUM   QED   QED 
+sig   sig   H-   H+   GsigsigHmHp    DUM   QED   QED 
+sig   sig   sig   h   GsigsigsigH    DUM   QED   QED 
+sig   sig   sig   H0   GsigsigsigH0    DUM   QED   QED 
+sig   sig   sig   sig   Gsigsigsigsig    DUM   QED   QED 
+
+
+# LLV Interactions 
+e-   e-   a   GAee   QED 
+mu-   mu-   a   GAmumu   QED 
+ta-   ta-   a   GAtata   QED 
+e-   e-   z   GZee   QED 
+mu-   mu-   z   GZmumu   QED 
+ta-   ta-   z   GZtata   QED 
+ve   ve   z   GZveve   QED 
+vm   vm   z   GZvmvm   QED 
+vt   vt   z   GZvtvt   QED 
+ve   e-   w+   GWpvee   QED 
+vm   mu-   w+   GWpvmmu   QED 
+vt   ta-   w+   GWpvtta   QED 
+e-   ve   w-   GWmeve   QED 
+mu-   vm   w-   GWmmuvm   QED 
+ta-   vt   w-   GWmtavt   QED 
+e-   e-   Zp   GZpee   QED 
+mu-   mu-   Zp   GZpmumu   QED 
+ta-   ta-   Zp   GZptata   QED 
+ve   ve   Zp   GZpveve   QED 
+vm   vm   Zp   GZpvmvm   QED 
+vt   vt   Zp   GZpvtvt   QED 
+ve   e-   Wp+   GWppvee   QED 
+vm   mu-   Wp+   GWppvmmu   QED 
+vt   ta-   Wp+   GWppvtta   QED 
+e-   ve   Wp-   GWpmeve   QED 
+mu-   vm   Wp-   GWpmmuvm   QED 
+ta-   vt   Wp-   GWpmtavt   QED 
+
+
+# LLS Interactions 
+e-   e-   h   GHee   QED 
+mu-   mu-   h   GHmumu   QED 
+ta-   ta-   h   GHtata   QED 
+e-   e-   H0   GH0ee   QED 
+mu-   mu-   H0   GH0mumu   QED 
+ta-   ta-   H0   GH0tata   QED 
+e-   e-   A0   GA0ee   QED 
+mu-   mu-   A0   GA0mumu   QED 
+ta-   ta-   A0   GA0tata   QED 
+ve   e-   H+   GHpvee   QED 
+vm   mu-   H+   GHpvmmu   QED 
+vt   ta-   H+   GHpvtta   QED 
+e-   ve   H-   GHmeve   QED 
+mu-   vm   H-   GHmmuvm   QED 
+ta-   vt   H-   GHmtavt   QED 
+e-   e-   phi0   Gphi0ee   QED 
+mu-   mu-   phi0   Gphi0mumu   QED 
+ta-   ta-   phi0   Gphi0tata   QED 
+ve   e-   phi+   Gphipvee   QED 
+vm   mu-   phi+   Gphipvmmu   QED 
+vt   ta-   phi+   Gphipvtta   QED 
+e-   ve   phi-   Gphimeve   QED 
+mu-   vm   phi-   Gphimmuvm   QED 
+ta-   vt   phi-   Gphimtavt   QED 
+e-   e-   eta0   Geta0ee   QED 
+mu-   mu-   eta0   Geta0mumu   QED 
+ta-   ta-   eta0   Geta0tata   QED 
+ve   e-   eta+   Getapvee   QED 
+vm   mu-   eta+   Getapvmmu   QED 
+vt   ta-   eta+   Getapvtta   QED 
+e-   ve   eta-   Getameve   QED 
+mu-   vm   eta-   Getammuvm   QED 
+ta-   vt   eta-   Getamtavt   QED 
+e-   e-   sig   Gsigee   QED 
+mu-   mu-   sig   Gsigmumu   QED 
+ta-   ta-   sig   Gsigtata   QED 
+
+\
+\>", "Print",
+ CellChangeTimes->{3.51777082225803*^9, 3.520883053189753*^9}]
+}, Open  ]]
+},
+WindowSize->{1083, 940},
+WindowMargins->{{Automatic, 19}, {Automatic, 0}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 632, 12, 43, "Input"],
+Cell[1180, 34, 1607, 28, 253, "Input"],
+Cell[2790, 64, 11257, 313, 591, "Input"],
+Cell[14050, 379, 252, 6, 27, "Input"],
+Cell[14305, 387, 2121, 53, 88, "Input"],
+Cell[16429, 442, 2353, 57, 88, "Input"],
+Cell[18785, 501, 2182, 54, 88, "Input"],
+Cell[20970, 557, 2115, 54, 103, "Input"],
+Cell[23088, 613, 5802, 140, 238, "Input"],
+Cell[28893, 755, 2426, 63, 118, "Input"],
+Cell[31322, 820, 7319, 182, 268, "Input"],
+Cell[38644, 1004, 2640, 64, 103, "Input"],
+Cell[41287, 1070, 6262, 152, 238, "Input"],
+Cell[47552, 1224, 1889, 49, 88, "Input"],
+Cell[49444, 1275, 2088, 53, 88, "Input"],
+Cell[CellGroupData[{
+Cell[51557, 1332, 61, 1, 27, "Input"],
+Cell[51621, 1335, 863, 13, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52521, 1353, 180, 3, 27, "Input"],
+Cell[52704, 1358, 34378, 909, 11798, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
